@@ -1,0 +1,120 @@
+{
+  "repository": {
+    "name": "MAROL-System-Overview",
+    "type": "public_portfolio",
+    "purpose": "Documentation-only showcase (no source code)",
+    "owner": "Vinod Sridharan",
+    "contact": "vinod.sridharan@txvault.app",
+    "live_demo": "https://marol-backend-467264912930.us-east1.run.app",
+    "private_repo": "cole-medin-ai-mirror (not linked publicly)"
+  },
+  "content_rules": {
+    "allowed": [
+      "Architecture diagrams (high-level only)",
+      "Feature descriptions (what it does, not how)",
+      "Screenshots (UI only, no code/logs)",
+      "Public contact information",
+      "MIT License",
+      "Documentation (.md files)",
+      "Logo and images"
+    ],
+    "forbidden": [
+      "Source code (*.py, app.py, etc.)",
+      "Environment variables or secrets",
+      "Database credentials or API keys",
+      "Internal problem logs (SOR files)",
+      "Deployment scripts or configs",
+      "Supabase functions or migrations",
+      "Bootstrap or internal docs",
+      "Git history from private repo"
+    ]
+  },
+  "security_checklist": {
+    "before_commit": [
+      "No API keys, passwords, or secrets",
+      "No source code or implementation details",
+      "No internal SOR references",
+      "No bootstrap or problem log excerpts",
+      "Screenshots are UI-only (no terminal/logs)",
+      "Contact info is business email only"
+    ]
+  },
+  "contact_policy": {
+    "primary_email": "vinod.sridharan@txvault.app",
+    "linkedin": "linkedin.com/in/vinod-s-6a565b1b8",
+    "live_demo": "https://marol-backend-467264912930.us-east1.run.app",
+    "never_include": [
+      "Personal phone numbers",
+      "Personal email addresses",
+      "Physical addresses",
+      "Internal Slack/Discord"
+    ]
+  },
+  "git_commit_policy": {
+    "message_format": "[type]: [description]",
+    "allowed_types": ["docs", "feat", "chore", "fix"],
+    "examples": {
+      "good": [
+        "docs: add architecture overview",
+        "feat: add evaluation workspace screenshots"
+      ],
+      "bad": [
+        "fix: resolve SOR v251 issue (internal reference)"
+      ]
+    },
+    "must_be_public_safe": true
+  },
+  "analytics": {
+    "provider": "plausible",
+    "domain": "github.com/VinodSridharan/MAROL-System-Overview",
+    "track_events": [
+      "demo_link_click",
+      "contact_email_click",
+      "linkedin_click",
+      "screenshot_view"
+    ],
+    "privacy_compliant": true,
+    "config_location": "analytics/ (gitignored)"
+  },
+  "update_triggers": {
+    "update_when": [
+      "New major version deployed (v1.0, v2.0)",
+      "Significant feature additions",
+      "Architecture changes",
+      "New screenshots available"
+    ],
+    "do_not_update_for": [
+      "Internal development iterations",
+      "Bug fixes in private repo",
+      "SOR version bumps"
+    ]
+  },
+  "public_private_boundary": {
+    "private_repo_contains": [
+      "Full source code",
+      "Development history",
+      "SOR documentation",
+      "Problem logs",
+      "Internal handbooks"
+    ],
+    "public_repo_contains": [
+      "Documentation only",
+      "Architecture concepts",
+      "Screenshots",
+      "Contact information"
+    ],
+    "rule": "Never merge or reference between the two"
+  },
+  "file_management": {
+    "safe_extensions": [".md", ".png", ".jpg", ".txt", ".json (this file)"],
+    "forbidden_extensions": [".py", ".sql", ".yaml", ".env", ".sh", ".ps1"],
+    "before_adding_file": [
+      "Ask: Does this reveal implementation details?",
+      "Ask: Could this expose secrets or processes?",
+      "If YES to either: DO NOT add"
+    ]
+  },
+  "version": "1.0",
+  "last_updated": "2026-01-10",
+  "schema_version": "1.0"
+}
