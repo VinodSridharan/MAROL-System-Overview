@@ -1,10 +1,14 @@
 <div align="center">
 
+![MAROL Logo](screenshots/SkySwim200.png)
+
 # MAROL - The Answer Guru
 
 **Where reasoning is the key, orchestration is the sauce.**
 
 Production multi-agent RAG system delivering **100% grounded answers** with **94% entity coverage**.
+
+![Answer Guru Landing Page](screenshots/landing-page.png)
 
 [**Try Live Demo**](https://marol-backend-467264912930.us-central1.run.app) | [**Request Evaluation Access**](#evaluation-workspace-access) | [**Technical Overview**](docs/ARCHITECTURE.md)
 
@@ -113,7 +117,7 @@ Download Q&A sessions as:
 
 ---
 
-## **Evaluation Workspace Access**
+## **🔑 Evaluation Workspace Access**
 
 Need deeper access for **technical evaluations, interviews, or collaborative reviews**?
 
@@ -121,38 +125,56 @@ Need deeper access for **technical evaluations, interviews, or collaborative rev
 
 ### Request Evaluation Access
 
-**Get a private workspace** to review MAROL on your own data and run deeper technical evaluations.
+**Get a private workspace** to test MAROL on your own data with unlimited corpora and persistent storage.
 
-**What this unlocks:**
-- ✨ **Multi-corpus uploads** - Unlimited corpora
-- 💾 **Persistent storage** - Beyond 24h demo limit
-- 🗂️ **Workspace page** - Corpus management, scoped Q&A
-- 📊 **Enhanced analytics** - Full observability views
+**Perfect for:**
+- 🎤 Technical interviews & code walkthroughs
+- 🤝 Stakeholder demos & architecture reviews
+- 💼 Job applications & portfolio discussions
+- 📊 Business evaluations & partnership exploration
 
-**How to request:**
+---
+
+### **Quick Request (Choose One):**
 
 <table>
 <tr>
 <td align="center" width="50%">
 
-**📧 Email Request**
+#### 📧 **Email Request**
 
-[Open Pre-Filled Email](mailto:vinod.sridharan@txvault.app?subject=MAROL%20Evaluation%20Access&body=Hi%2C%0D%0A%0D%0AI%27d%20like%20evaluation%20access%20to%20MAROL%20for%3A%0D%0A-%20Interview%20prep%20%2F%20Technical%20review%20%2F%20Partnership%20Exploration%0D%0A%0D%0ARole%3A%20%5BYour%20role%2Fcompany%5D%0D%0AUse%20case%3A%20%5BBrief%20description%5D%0D%0A%0D%0AThanks!)
+**[Open Email Draft](mailto:vinod.sridharan@txvault.app?subject=MAROL%20Evaluation%20Access%20Request&body=Hi%20Vinod%2C%0D%0A%0D%0AI%27d%20like%20evaluation%20access%20to%20MAROL%20-%20The%20Answer%20Guru%20for%3A%0D%0A%0D%0A%E2%9C%85%20Technical%20interview%20prep%0D%0A%E2%9C%85%20Architecture%20review%0D%0A%E2%9C%85%20Partnership%20exploration%0D%0A%E2%9C%85%20Job%20application%20portfolio%0D%0A%0D%0A**My%20Details%3A**%0D%0ARole%3A%20%5BYour%20role%2Fcompany%5D%0D%0AUse%20case%3A%20%5BBrief%20description%5D%0D%0ATimeline%3A%20%5BWhen%20you%20need%20access%5D%0D%0A%0D%0AThanks%2C%0D%0A%5BYour%20name%5D)**
 
-Auto-fills subject and body in your email client
+*Opens pre-filled email in Outlook/Gmail*
 
 </td>
 <td align="center" width="50%">
 
-**💼 LinkedIn Message**
+#### 💬 **LinkedIn Message**
 
-[Connect on LinkedIn](https://www.linkedin.com/in/vinod-s-6a565b1b8)
+**[Connect & Message](https://www.linkedin.com/in/vinod-s-6a565b1b8)**
 
-Send a connection request mentioning MAROL evaluation
+*Template to copy:*
+Hi Vinod,
+
+I'd like evaluation access to MAROL - The Answer Guru.
+
+Use case: [Technical interview / Demo / Review]
+Timeline: [When you need it]
+
+Looking forward to trying the multi-agent RAG system!
+
+text
 
 </td>
 </tr>
 </table>
+
+**Keys are:**
+- ⏱️ Time-boxed (7 days)
+- 📊 Usage-limited (10 requests)
+- ✅ Instant activation (5 min vs 60 min deployment)
+
 
 **Perfect for:**
 - 🎤 **Technical interviews** - Architecture walkthroughs

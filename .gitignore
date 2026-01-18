@@ -1,20 +1,16 @@
+# LinkedIn tracking
+LINKEDIN_POST.md
+
+# Policy
+policy.json
+
 # Python
 __pycache__/
-*.py[cod]
 *.pyc
-.Python
 
-# Virtual environments
-env/
-venv/
-ENV/
-
-# Environment variables
+# Environments
 .env
 .env.local
-
-# Logs
-*.log
 
 # OS
 .DS_Store
@@ -23,33 +19,3 @@ Thumbs.db
 # IDEs
 .vscode/
 .idea/
-*.swp
-*.swo
-
-# Build artifacts
-dist/
-build/
-*.egg-info/
-
-# LinkedIn tracking (not public-facing)
-LINKEDIN_POST.md
-
-# Policy (internal)
-policy.json
-
-# Assets (use CDN or inline if needed)
-assets/
-
-# Screenshots (embedded in docs via URLs if needed)
-screenshots/
-# LinkedIn tracking
-LINKEDIN_POST.md
-
-# Policy
-policy.json
-
-# Assets
-assets/
-
-# Screenshots
-screenshots/
