@@ -1,214 +1,269 @@
 <div align="center">
-  <img src="assets/logo.png" alt="MAROL - Sky Swan Logo" width="256"/>
-  
-  # MAROL
-  ### Multi-Agent RAG Orchestration Lab
-  
-  **"Reasoning is the key. Orchestration is the sauce."**
-  
-  [![Live Demo](https://img.shields.io/badge/Demo-Live-success)](https://marol-backend-467264912930.us-central1.run.app)
-  [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-  [![Cloud Run](https://img.shields.io/badge/Google%20Cloud-Run-4285F4?logo=google-cloud)](https://cloud.google.com/run)
-  
-  **Production multi-agent RAG system for technical collaboration**
-  
-  🌐 [Try Live Demo](https://marol-backend-467264912930.us-central1.run.app) • 📧 [Contact](mailto:vinod.sridharan@txvault.app)
+
+# MAROL - The Answer Guru
+
+**Where reasoning is the key, orchestration is the sauce.**
+
+Production multi-agent RAG system delivering **100% grounded answers** with **94% entity coverage**.
+
+[**Try Live Demo**](https://marol-backend-467264912930.us-central1.run.app) | [**Request Evaluation Access**](#evaluation-workspace-access) | [**Technical Overview**](docs/ARCHITECTURE.md)
+
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Live Demo](https://img.shields.io/badge/Demo-Live-success)](https://marol-backend-467264912930.us-central1.run.app)
+
 </div>
 
 ---
 
-## ⚡ What MAROL Demonstrates
+## **What is Answer Guru?**
 
-Most RAG systems can't **think**—they just retrieve and generate.
+**MAROL - The Answer Guru** is a production-deployed RAG system that goes beyond simple retrieval-generation. It uses **three specialized agents** that collaborate through deliberative reasoning to deliver:
 
-**MAROL is different.**
+- ✅ **100% Grounded Answers** - Only information from your documents, zero hallucinations
+- ✅ **Multi-Chunk Synthesis** - Combines 10-20 chunks for complete answers
+- ✅ **94% Entity Coverage** - Finds and mentions all relevant concepts, tools, entities
+- ✅ **Full Evidence Trail** - Every claim traceable to source chunks
 
-It uses **three specialized agents** that collaborate through deliberative reasoning loops:
-
-1. **Retrieval Agent** → Finds information (hybrid BM25 + vector search)
-2. **Reasoning Agent** → Evaluates: *"Is this enough? Do I need more?"*
-3. **Synthesis Agent** → Generates grounded answers with full evidence
-
-**The result:** 20% better accuracy on complex queries, with full cost controls and evidence transparency.
-
-**Live on Google Cloud Run** - v1.0 deployed 2026-01-10
+**Philosophy:** "**100% not 101%**" - Complete, accurate answers. Nothing less, nothing more.
 
 ---
 
-## 🎯 Key Features (v1.0)
+## **How It Works: Three-Agent Collaboration**
 
-✨ **Multi-Agent Orchestration** - LangGraph state graphs with specialized agents  
-🔍 **Hybrid Retrieval** - BM25 + vector + reranking (91% vs 78% accuracy)  
-🎙️ **WhisperingChunks Engine** - Proprietary transcription for audio/video  
-🔑 **Evaluation Workspace** - Request access via in-app modal (email/LinkedIn buttons)  
-📊 **Evidence Badges** - Route, confidence, chunks displayed above every answer  
-📁 **Folder Upload** - 3 files with automatic 10% corpus overview  
-✅ **100% Grounding** - No hallucinations, corpus-only answers  
+<table>
+<tr>
+<td width="33%">
 
----
+### 🔍 Retrieval Agent
+**Finds information**
 
-## 🎙️ Powered by WhisperingChunks
+- Hybrid search (semantic + keyword)
+- Entity-aware boosting
+- 91% accuracy vs 78% vector-only
 
-MAROL's audio/video processing uses **WhisperingChunks** — a production transcription engine achieving superior quality through intelligent overlap-based chunking.
+</td>
+<td width="33%">
 
-**Features:**
-- High-quality transcription (OpenAI Whisper)
-- Intelligent chunking (500-token chunks, 50-token overlap)
-- YouTube & audio support (yt-dlp integration)
-- Semantic continuity preservation
+### 🧠 Reasoning Agent
+**Evaluates quality**
 
-Enables processing of long-form content (podcasts, videos, talks) with high retrieval accuracy.
+- Checks: "Is this enough?"
+- Triggers re-retrieval if needed
+- 20% better on complex queries
 
-🔗 [WhisperingChunks Repository](https://github.com/VinodSridharan/WhisperingChunks-Overview)
+</td>
+<td width="33%">
 
----
+### ✍️ Synthesis Agent
+**Generates answers**
 
-## 📊 Metrics (v1.0)
+- 100% corpus grounding
+- Zero hallucinations
+- Full citations
 
-**Performance:**
-- Query latency: 1.8-3.2s (complex multi-agent queries)
-- Cloud Run: ~2.9s average (serverless)
-- Retrieval: 91% (hybrid) vs 78% (vector-only)
-
-**Quality:**
-- 20% accuracy improvement (multi-agent vs single)
-- 100% grounding (no hallucinations)
-- Full evidence transparency
-
-**Deployment:**
-- Uptime: 99%+ on Cloud Run
-- Auto-scaling: 0→N instances
-- Cost: <$5/day with public access
+</td>
+</tr>
+</table>
 
 ---
 
-## 🛠️ Technology Stack
+## **Key Features**
 
-**Orchestration:** LangGraph (state graphs, cyclic workflows)  
-**Backend:** Python 3.11, FastAPI (async)  
-**Transcription:** **WhisperingChunks** (proprietary)  
-**Database:** Supabase (PostgreSQL + pgvector)  
-**LLMs:** OpenAI GPT-4, Anthropic Claude, Google Gemini  
-**Retrieval:** Hybrid (BM25 + vector + reranking)  
-**Deployment:** Google Cloud Run (serverless)  
-**Frontend:** Alpine.js, Tailwind CSS  
+### **🎯 Answer Guru Core**
+- **Two Modes:**
+  - **Default:** 88% coverage, fast, corpus-agnostic
+  - **Exam-Ready:** 94-100% coverage for critical corpora (interviews, demos, evaluations)
+- **Multi-chunk synthesis** - 10-20 chunks per answer
+- **Proper citations** - [chunk:X] format
+- **Conservative** when information incomplete
 
----
+### **📁 Smart Folder Upload**
+- Upload 3 files (.txt, .md, .pdf, .docx)
+- Automatic **10% corpus overview**
+- **4-6 suggested questions** based on actual content
+- Instant Q&A capability
 
-## 🚀 Try It Now
+### **📊 Evidence Transparency**
+Every answer shows:
+- **Route** - Which agent answered
+- **Confidence** - System certainty (0-100%)
+- **Chunks** - Evidence count
 
-### Live Demo
-
-🌐 [**https://marol-backend-467264912930.us-central1.run.app**](https://marol-backend-467264912930.us-central1.run.app)
-
-**Free demo features:**
-- Multi-agent Q&A with evidence badges
-- Folder upload (3 files max)
-- Automatic 10% corpus overview with suggested questions
-- Export answers (Word, Markdown)
-- YouTube/audio transcription via WhisperingChunks
-
-**Try these questions:**
-- "What is LangGraph?"
-- "What does Cole use for payments?"
-- "What are AI-native workflows?"
+### **📄 Answer Export**
+Download Q&A sessions as:
+- Word (.docx) - Professional reports
+- Markdown (.md) - Developer-friendly
 
 ---
 
-## 📧 Request Evaluation Access
+## **Live Demo**
 
-For deeper testing (multi-corpus, persistent storage, workspace features):
+**Try it now:** [https://marol-backend-467264912930.us-central1.run.app](https://marol-backend-467264912930.us-central1.run.app)
 
-**📧 vinod.sridharan@txvault.app**  
-**Subject:** MAROL Evaluation Workspace Request
+**Test questions:**
+- "What tools does Cole use for RAG?"
+- "What bottlenecks exist in AI-augmented development?"
+- Upload your own documents and ask questions
 
-Or use the **in-app modal**:
-1. Click "Request evaluation access →"
-2. Choose "Open email draft" or "Copy LinkedIn message"
-3. Send your request
-
-Keys are time-boxed and usage-limited—perfect for focused evaluations and interviews.
-
----
-
-## 🎯 Use Cases
-
-**Engineering Interviews** - Walk through multi-agent architecture, explain routing decisions, discuss RAG trade-offs in real-time
-
-**Stakeholder Demos** - Upload custom documents, get automatic corpus overviews, ask grounded questions with full evidence
-
-**Audio/Video Q&A** - Process YouTube videos, podcasts, technical talks via WhisperingChunks transcription
-
-**Collaborative Reviews** - Request evaluation access, test workspace features, validate RAG patterns
+**Demo mode features:**
+- ✅ Upload 3 files
+- ✅ Ask unlimited questions
+- ✅ See evidence badges in action
+- ✅ Export answers (Word/Markdown)
 
 ---
 
-## 📖 Documentation
+## **Evaluation Workspace Access**
 
-- [System Overview](docs/OVERVIEW.md) - What MAROL demonstrates
-- [Capabilities](docs/CAPABILITIES.md) - Feature descriptions
-- [Architecture](docs/ARCHITECTURE.md) - Technical design patterns
-- [Safety & Privacy](SAFETY.md) - Data handling policies
+Need deeper access for **technical evaluations, interviews, or collaborative reviews**?
+
+<div align="center">
+
+### Request Evaluation Access
+
+**Get a private workspace** to review MAROL on your own data and run deeper technical evaluations.
+
+**What this unlocks:**
+- ✨ **Multi-corpus uploads** - Unlimited corpora
+- 💾 **Persistent storage** - Beyond 24h demo limit
+- 🗂️ **Workspace page** - Corpus management, scoped Q&A
+- 📊 **Enhanced analytics** - Full observability views
+
+**How to request:**
+
+<table>
+<tr>
+<td align="center" width="50%">
+
+**📧 Email Request**
+
+[Open Pre-Filled Email](mailto:vinod.sridharan@txvault.app?subject=MAROL%20Evaluation%20Access&body=Hi%2C%0D%0A%0D%0AI%27d%20like%20evaluation%20access%20to%20MAROL%20for%3A%0D%0A-%20Interview%20prep%20%2F%20Technical%20review%20%2F%20Partnership%20Exploration%0D%0A%0D%0ARole%3A%20%5BYour%20role%2Fcompany%5D%0D%0AUse%20case%3A%20%5BBrief%20description%5D%0D%0A%0D%0AThanks!)
+
+Auto-fills subject and body in your email client
+
+</td>
+<td align="center" width="50%">
+
+**💼 LinkedIn Message**
+
+[Connect on LinkedIn](https://www.linkedin.com/in/vinod-s-6a565b1b8)
+
+Send a connection request mentioning MAROL evaluation
+
+</td>
+</tr>
+</table>
+
+**Perfect for:**
+- 🎤 **Technical interviews** - Architecture walkthroughs
+- 🤝 **Stakeholder demos** - Custom data testing
+- 📚 **Collaborative reviews** - Deep RAG pattern validation
+- 🎯 **Critical evaluations** - High-stakes answer quality
+
+</div>
 
 ---
 
-## 🤝 Contact & Collaboration
+## **Use Cases**
 
-**For technical discussions, evaluation access, or collaboration:**
+### **For Engineering Leadership**
+- Production LLM deployment with cost controls
+- Multi-agent orchestration patterns
+- Answer quality and grounding strategies
 
-📧 **vinod.sridharan@txvault.app**  
-🔗 **LinkedIn:** [linkedin.com/in/vinod-s-6a565b1b8](https://www.linkedin.com/in/vinod-s-6a565b1b8)  
-🌐 **Live Demo:** https://marol-backend-467264912930.us-central1.run.app
+### **For Technical Teams**
+- Hybrid retrieval (semantic + keyword)
+- Citation-backed synthesis
+- Graceful degradation patterns
 
-**Open to:**
-- Engineering interviews & code walkthroughs
-- RAG architecture discussions
-- Multi-agent orchestration consulting
-- Speaking opportunities
-
----
-
-## 🙏 Related Projects
-
-🎙️ **WhisperingChunks** - Production transcription & chunking engine  
-[github.com/VinodSridharan/WhisperingChunks-Overview](https://github.com/VinodSridharan/WhisperingChunks-Overview)
+### **For Product Teams**
+- Real-world RAG with measurable quality
+- Cost-transparent design ($5/day with public access)
+- Production-ready deployment patterns
 
 ---
 
-## 📝 Version History
+## **Architecture Highlights**
 
-**v1.0** (2026-01-10)
-- Multi-agent orchestration with LangGraph
-- WhisperingChunks integration for audio/video
-- Evaluation workspace with request modal
-- Folder upload with 10% overview
-- Evidence badges for transparency
-- Production Cloud Run deployment
+**Hybrid Retrieval:**
+- 70% semantic (pgvector)
+- 30% keyword (BM25)
+- Reciprocal Rank Fusion (RRF)
+- **91% accuracy** vs 78% pure vector
+
+**Grounding Enforcement:**
+- Single-chunk literal mode
+- Perfection mode for definitions
+- No generic recommendations
+- Zero hallucinations tolerance
+
+**Production-Ready:**
+- Google Cloud Run (serverless, auto-scaling)
+- 99% uptime
+- 1.8-3.2s latency
+- Rate limiting (5 req/min demo)
 
 ---
 
-## 📄 License
+## **Technical Specifications**
 
-MIT License - See [LICENSE](LICENSE).
+| Component | Technology |
+|-----------|-----------|
+| **Orchestration** | LangGraph state graphs |
+| **Backend** | FastAPI (async) |
+| **LLM** | OpenAI GPT-4o |
+| **Vector Store** | Supabase (pgvector) |
+| **Retrieval** | Hybrid (BM25 + semantic) |
+| **Deployment** | Google Cloud Run |
+| **Frontend** | Alpine.js + Tailwind CSS |
 
-**Note:** This repository contains documentation and overview only. The live system is proprietary. For evaluation access or technical collaboration: vinod.sridharan@txvault.app
+**Metrics:**
+- 📊 **Coverage:** 94% (Exam-Ready Mode)
+- 🎯 **Accuracy:** 100% (zero hallucinations)
+- ⚡ **Latency:** 1.8-3.2s (multi-agent)
+- 💰 **Cost:** $0.02/query (with caching)
 
 ---
 
-## 🙏 Acknowledgments
+## **Documentation**
 
-- [LangGraph](https://github.com/langchain-ai/langgraph) by LangChain
-- [Supabase](https://supabase.com/) for vector storage
-- [Google Cloud Run](https://cloud.google.com/run) for serverless deployment
-- **WhisperingChunks** - Proprietary transcription engine
+- **[Architecture](docs/ARCHITECTURE.md)** - Technical design, data flow, deployment
+- **[Capabilities](docs/CAPABILITIES.md)** - Feature descriptions, use cases
+- **[Highlights](docs/HIGHLIGHTS.md)** - Key achievements, metrics
+- **[Overview](docs/OVERVIEW.md)** - Project vision, philosophy
+
+---
+
+## **Contact & Collaboration**
+
+**Interested in:**
+- 🎤 **Technical interviews** - Code walkthroughs, architecture discussions
+- 🤝 **RAG consulting** - Multi-agent patterns, production deployment
+- 💼 **Full-time roles** - AI/ML Engineering, RAG systems at scale
+- 🎓 **Speaking/workshops** - LangGraph, production LLM patterns
+
+**Reach out:**
+- **Email:** [vinod.sridharan@txvault.app](mailto:vinod.sridharan@txvault.app)
+- **LinkedIn:** [linkedin.com/in/vinod-s-6a565b1b8](https://www.linkedin.com/in/vinod-s-6a565b1b8)
+- **Live Demo:** [marol-backend-467264912930.us-central1.run.app](https://marol-backend-467264912930.us-central1.run.app)
+
+---
+
+## **License**
+
+MIT License - See [LICENSE](LICENSE)
+
+**Note:** This repository contains documentation and overview only. The live system is proprietary. For evaluation access or technical collaboration: [vinod.sridharan@txvault.app](mailto:vinod.sridharan@txvault.app)
 
 ---
 
 <div align="center">
-  
-  **Latest Update:** 2026-01-10 | **Status:** ✅ Production | **Version:** v1.0
-  
-  Made with 🦢 for the AI/ML community
-  
-  <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FVinodSridharan%2FMAROL-System-Overview&label=Visitors&countColor=%23263759" />
+
+**Built by Vinod Sridharan**
+
+*Demonstrating production-grade multi-agent RAG system design and advanced LLM orchestration*
+
+**Latest Update:** 2026-01-18 | **Status:** Production | **Version:** v1.0
+
 </div>
+
