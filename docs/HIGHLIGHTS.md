@@ -28,7 +28,7 @@
 - **Backend:** FastAPI
 - **LLM:** OpenAI GPT-4o
 - **Vector Store:** Supabase (pgvector)
-- **Frontend:** Alpine.js + Tailwind CSS  ← FIX THIS
+- **Frontend:** Alpine.js + Tailwind CSS
 - **Deployment:** Google Cloud Run
 
 
