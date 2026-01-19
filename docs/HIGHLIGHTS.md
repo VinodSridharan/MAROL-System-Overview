@@ -1,6 +1,6 @@
 # Key Achievements
 
-## Production Metrics (Dec 30, 2025)
+**Production Metrics (Jan 19, 2026 - v2.1)**  
 
 ✅ **4/5 endpoints operational** in production  
 ✅ **1.8–3.2s latency** for complex multi-agent queries  
@@ -24,12 +24,13 @@
 
 ## Tech Stack
 
-**Orchestration**: LangGraph  
-**Backend**: FastAPI  
-**LLM**: OpenAI GPT-4o  
-**Vector Store**: Supabase (pgvector)  
-**Frontend**: React + TypeScript  
-**Deployment**: Google Cloud Run  
+- **Orchestration:** LangGraph
+- **Backend:** FastAPI
+- **LLM:** OpenAI GPT-4o
+- **Vector Store:** Supabase (pgvector)
+- **Frontend:** Alpine.js + Tailwind CSS  ← FIX THIS
+- **Deployment:** Google Cloud Run
+
 
 ## What This Demonstrates
 
