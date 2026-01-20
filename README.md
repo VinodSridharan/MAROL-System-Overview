@@ -14,6 +14,9 @@ Production multi‑agent RAG lab on Google Cloud Run delivering **Exam‑Ready a
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Live Demo](https://img.shields.io/badge/Demo-Live-success)](https://marol-backend-467264912930.us-central1.run.app)
 [![Version](https://img.shields.io/badge/Version-v2.1-purple)](https://github.com/VinodSridharan/MAROL-System-Overview)
+![GitHub last commit](https://img.shields.io/github/last-commit/VinodSridharan/MAROL-System-Overview)
+![GitHub repo size](https://img.shields.io/github/repo-size/VinodSridharan/MAROL-System-Overview)
+![License](https://img.shields.io/github/license/VinodSridharan/MAROL-System-Overview)
 
 </div>
 
