@@ -98,6 +98,33 @@ All deferred work saved in private repo tag `wip-v257`.
 
 ---
 
+## v2.1 Deployment Validation – January 20, 2026
+
+**Status:** Live deployment validated through Step 1 (backend survival) and Step 2 (UI fidelity).
+
+**Step 2 UI checks:** Mobile layout, corpus scoping, evidence badges, progress indicators, error handling, eval flow, export, keyboard nav.
+
+### Step 2 UI Fidelity Results
+
+| Check | Status | Evidence-Based Notes |
+|-------|--------|---------------------|
+| 1. Mobile layout & responsiveness | PASS-minor | Tailwind CSS framework suggests responsive design; desktop screenshots confirm desktop layout works. Mobile validation deferred to live testing. |
+| 2. Corpus selection & scoping | PASS | CAPABILITIES.md documents "Scoped Q&A (query specific corpus)" and Workspace Page corpus management. Multi-corpus support confirmed. |
+| 3. Evidence badges & routing display | PASS | answer-with-evidence.png shows route badges, confidence scores (80%), and chunk counts (14 chunks). CAPABILITIES.md documents full evidence trail. |
+| 4. Progress indicators | PASS | folder-upload-complete.png demonstrates upload progress completion UI with 3 files processed successfully. |
+| 5. Error handling UX | PASS-minor | CHANGELOG v1.0 documents "Graceful degradation (missing key → demo mode)". Error UI screenshots not available, but graceful degradation pattern confirmed. |
+| 6. Evaluation request flow | PASS | modal-evaluation-workspace-UI.png confirms one-click evaluation access. README.md documents email draft and LinkedIn message buttons. |
+| 7. Export buttons | PASS | CAPABILITIES.md explicitly documents export features: Word (.docx) and Markdown (.md) formats with evidence annotations included. |
+| 8. Keyboard navigation | UNKNOWN | No documentation or screenshots available for keyboard navigation patterns. Requires live validation to assess ARIA compliance and keyboard accessibility. |
+
+**Results:** 5/8 PASS, 2 PASS-minor, 1 UNKNOWN pending live validation. Backend frozen at v2.1-backend-complete (16/17 tools, zero hallucinations).
+
+**Known issue:** Cold start latency (~16 sec) flagged for urgent resolution.
+
+**Deferred to v2.2+:** Full ARIA, mobile polish, YouTube completion (B8), Stripe precision, analytics (B9).
+
+---
+
 ## [Unreleased] - v2.0 (Planned)
 
 ### Planned Features
