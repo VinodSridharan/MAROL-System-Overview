@@ -1,193 +1,371 @@
 <div align="center">
 
-![MAROL Logo](screenshots/SkySwim200.png)
+![MAROL Logo](assets/logo.png)
 
-# MAROL – The Answer Guru  
-System Overview
+# MAROL – The Answer Guru
 
-**Where reasoning is the key, orchestration is the sauce.**
+**System Overview**
 
-Production multi‑agent RAG lab on Google Cloud Run delivering **Exam‑Ready answers**, **16/17 tools coverage**, and **zero hallucinations** on curated corpora.
+*Where reasoning is the key, orchestration is the sauce.*
 
-[**🚀 Try Live Demo**](https://marol-backend-467264912930.us-central1.run.app) · [**📚 Technical Architecture**](docs/ARCHITECTURE.md) · [**⭐ Star this repo**](https://github.com/VinodSridharan/MAROL-System-Overview)
+Production multi-agent RAG lab delivering **Exam-Ready answers**, **16/17 tools coverage**, and **zero hallucinations** on curated corpora.
 
-[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Live Demo](https://img.shields.io/badge/Demo-Live-success)](https://marol-backend-467264912930.us-central1.run.app)
-[![Version](https://img.shields.io/badge/Version-v2.1-purple)](https://github.com/VinodSridharan/MAROL-System-Overview)
+[![Try Live Demo](https://img.shields.io/badge/Try-Live%20Demo-purple?style=for-the-badge)](https://marol-backend-467264912930.us-central1.run.app/) 
+[![Request Evaluation Key](https://img.shields.io/badge/Request-Evaluation%20Key-blue?style=for-the-badge)](mailto:vinod.sridharan@txvault.app?subject=MAROL%20Evaluation%20Key%20Request)
+[![Star this repo](https://img.shields.io/github/stars/VinodSridharan/MAROL-System-Overview?style=for-the-badge)](https://github.com/VinodSridharan/MAROL-System-Overview)
+
 ![GitHub last commit](https://img.shields.io/github/last-commit/VinodSridharan/MAROL-System-Overview)
-![GitHub repo size](https://img.shields.io/github/repo-size/VinodSridharan/MAROL-System-Overview)
 ![License](https://img.shields.io/github/license/VinodSridharan/MAROL-System-Overview)
+![Status](https://img.shields.io/badge/status-production-brightgreen)
+![Version](https://img.shields.io/badge/version-v2.1.1-blue)
 
 </div>
 
 ---
 
-## 🎯 Hero pitch
+## 🚀 What's New in v2.1.1 (January 20, 2026)
 
-Imagine if Cole's training prowess and Nate's futuristic vision lived in one corpus: a production RAG lab where multi‑agent workflows, Exam‑Ready evaluations, and long‑form audio corpora all converge on real engineering problems.  
+**Performance breakthrough:** Cold start optimized from 16 seconds → **<1 second**
 
-**MAROL – The Answer Guru** is that lab: a Cloud Run–hosted, multi‑agent RAG system that turns messy, mixed‑format corpora into grounded, evidence‑backed answers you can safely put in front of stakeholders. This repo is the **System Overview**—architecture, timelines, and design notes for people who care how production AI systems are actually built.
+**UI improvements:** Mobile touch targets, keyboard shortcuts (`Ctrl+Enter`, `Escape`), focus rings, ARIA labels
 
----
-
-## ✨ Why this is different
-
-- **🎭 Multi‑agent orchestration that feels production‑grade** – LangGraph state graphs coordinate Research, Direct, and Perfection flows instead of a single "chat completion" call
-- **🎙️ Audio & YouTube pipelines via WhisperingChunks** – a separate transcription + chunking service (its own repo and deployment) that feeds long‑form talks and videos into MAROL as searchable corpora via APIs
-- **🎯 Exam‑Ready evaluation harness** – frozen baselines, corpus‑specific questions, and routing that hit 16/17 tools with 100% grounding on critical test sets
-- **📊 Evidence‑badged answers** – every response carries route, confidence, and chunk counts so reviewers can audit reasoning, not just outputs
-- **☁️ Cloud‑native deployment** – FastAPI + LangGraph backend, Supabase (pgvector) store, and serverless scaling on Google Cloud Run with real latency and cost numbers
-- **💳 Safe, payment‑aware flows** – Stripe‑adjacent questions are handled conservatively and grounded, showing how to treat risk‑sensitive topics in a RAG system
-- **📈 Eval‑driven development** – retrieval, prompts, and orchestration are tuned against explicit coverage/accuracy targets rather than vibes
+**Validation:** Step 1 + Step 2 smoke tests complete • 6/8 PASS, 2/8 PASS-minor • Production-ready
 
 ---
 
-## 👥 Who this repo is for
+## 💡 The Vision
 
-- **🎯 Recruiters / hiring managers** – Proof that the author can **design, ship, and operate** a production multi‑agent RAG system end‑to‑end (backend, UI, evals, cloud infra)
-- **🏗️ Tech leads / principal engineers / architects** – A concrete reference for **hybrid retrieval, LangGraph orchestration, and grounding strategies** you can adapt to your stack
-- **🎤 Interviewers / technical evaluators** – A portfolio artifact where you can inspect decisions, trade‑offs, and failure modes instead of just seeing a slide deck
-- **🤝 Collaborators / partners** – A blueprint for integrating multi‑agent RAG into your products (audio pipelines, evaluation consoles, AI‑native workflows)
-- **💼 Business stakeholders** – A live example of how AI can support **architecture reviews, stakeholder demos, and evaluation workflows** without hallucinating in front of executives
+**MAROL – The Answer Guru** turns messy, mixed-format documents into **grounded, evidence-backed answers** you can safely share with stakeholders.
 
----
+Built for people who care how production AI systems actually work—with **multi-agent orchestration**, **zero-hallucination targets**, and **Exam-Ready evaluation harnesses**.
 
-## 🌐 Live demo & related repos
-
-### 🚀 Live Answer Guru demo (Cloud Run)
-
-**[https://marol-backend-467264912930.us-central1.run.app](https://marol-backend-467264912930.us-central1.run.app)**  
-
-Production deployment of MAROL, including folder upload, **integration with the separate WhisperingChunks engine for audio and YouTube ingestion**, and the Answer Guru Q&A console with enhanced Getting Started panel.
-
-### 🔒 Production backend / UI repo
-
-Private in this portfolio but summarized here: FastAPI + LangGraph backend, Alpine.js/Tailwind UI, Supabase integration, and deployment scripts for Google Cloud Run. This is where the multi‑agent graphs, retrieval tools, and Exam‑Ready routing live.
-
-### 🎙️ WhisperingChunks overview (separate project)
-
-**[https://github.com/VinodSridharan/WhisperingChunks-Overview](https://github.com/VinodSridharan/WhisperingChunks-Overview)**  
-
-Standalone audio/video transcription engine that MAROL calls via APIs to turn meetings, talks, and YouTube videos into indexed corpora.
-
-### 📂 This System Overview repo (you are here)
-
-Curated **architecture diagrams, SOR timeline, session logs, screenshots, and evaluation notes** that explain how the system works and why it behaves the way it does.
+Upload a PDF. Ask a question. Get an answer with route badges, confidence scores, and chunk citations. No hallucinations. No generic advice. Just grounded reasoning.
 
 ---
 
-## 🔑 Built-in evaluation request flow
+## ⚡ Why This Is Different
 
-![Evaluation Workspace Access](screenshots/modal-evaluation-workspace-UI.png)
-*One-click evaluation access: Choose email draft or LinkedIn message - no manual typing needed*
-
-MAROL includes a **frictionless evaluation request system** built directly into the demo UI. Click "Unlock Evaluation Workspace" in the live demo to:
-
-- 📧 **Open email draft** - Auto-populates your email client with request details
-- 💼 **Copy LinkedIn message** - Ready-to-paste professional request
-- 🚀 **Get instant access** - Private workspace with persistent corpora, full-stack visibility, routing traces
-
-**What evaluation workspace unlocks:**
-- Unlimited file uploads and persistent corpora
-- Full routing traces and observability views  
-- Shared sandbox for interviews, code walkthroughs, architecture reviews
-- Configuration levers for testing RAG patterns
-
-Perfect for recruiters, technical interviewers, and collaborators who want to evaluate MAROL on their own data.
+- **Multi-agent orchestration:** LangGraph state graphs (Research → Direct → Perfection) replace single LLM calls
+- **Audio & YouTube pipelines:** Transcribe long-form content into searchable corpora via WhisperingChunks
+- **Exam-Ready baseline:** 16/17 tools, 100% grounding, zero hallucinations on frozen test sets
+- **Evidence-badged answers:** Every response shows route, confidence, chunk counts—audit the reasoning
+- **Cloud-native deployment:** FastAPI + Supabase + Google Cloud Run with real performance numbers
+- **Eval-driven development:** Coverage and accuracy targets drive decisions, not vibes
 
 ---
 
-## 🗺️ Repo tour: what to click first
+## 👥 Who This Is For
 
-- **`docs/ARCHITECTURE.md`** – High‑level architecture, data flow, and deployment topology (Cloud Run, Supabase, LangGraph orchestration graph)
-- **`docs/OVERVIEW.md`** – Narrative system overview, design philosophy ("100% not 101%"), and how Exam‑Ready mode fits into the roadmap
-- **`docs/CAPABILITIES.md`** – Feature matrix across folder upload, YouTube capture (via WhisperingChunks), audio integration, export, and the evaluation workspace
-- **`docs/HIGHLIGHTS.md`** – Selected metrics (coverage, latency, cost) and "greatest hits" examples you can skim in under five minutes
-- **`ANSWER_GURU_BASELINE.md`** – Baseline questions, routing notes, and v2.1 results (16/17 tools surfaced, 100% grounding, zero hallucinations)
-- **`SESSION_2_HANDOFF_2026-01-15.md`** & **`SESSION4_FINAL_SUMMARY.md`** – Time‑stamped session logs showing how the system evolved over multiple working sessions
-- **`docs/UI_AGENT_BACKEND_NOTES_v2_1.md`** – Frozen backend contracts for v2.1 UI work (endpoints, payloads, constraints between agents and UI)
-- **`PROBLEMS_AND_SOLUTIONS.md`** & **`LESSONS_LEARNED_INDEX.md`** – Real issue logs and lessons learned for debugging LangGraph flows, YouTube pipelines, and Supabase quirks
-- **`screenshots/*.png`** – Visual snapshots of the Answer Guru console, evidence badges, and evaluation workspace
+- **Recruiters & hiring managers** – Proof of end-to-end production RAG system design
+- **Tech leads & architects** – Reference for hybrid retrieval, LangGraph orchestration, grounding strategies
+- **Interviewers & evaluators** – Portfolio artifact showing decisions, tradeoffs, failure modes
+- **Collaborators & partners** – Blueprint for integrating multi-agent RAG into products
+- **Business stakeholders** – Live demo of AI supporting reviews without hallucinating
 
 ---
 
-## 💪 What this demonstrates about my skills
+## 🔗 Try It Now
 
-- **🏗️ End‑to‑end RAG system design** – From ingestion pipelines and hybrid retrieval to grounding strategies and evidence‑backed synthesis
-- **🎭 Multi‑agent orchestration with LangGraph** – Designing and operating multi‑agent flows (Research / Direct / Perfection) that behave predictably under load
-- **📊 Eval‑driven development** – Defining baselines, building evaluation harnesses, and using metrics like coverage and hallucination rate to drive architecture decisions
-- **☁️ Cloud Run deployment & cost control** – Containerizing a production LLM system, tuning for latency, and keeping costs reasonable for public demos
-- **🎨 Production UI + backend integration** – Wiring FastAPI endpoints, Alpine.js/Tailwind UI, and Supabase into a cohesive, debuggable Answer Guru console
-- **📝 Technical communication & documentation** – Writing system overviews, SOR entries, and troubleshooting guides that other engineers can actually act on
+### 🎯 [Live Demo (Instant Access)](https://marol-backend-467264912930.us-central1.run.app/)
+
+No signup required. Upload a file, ask a question, see evidence-backed answers in action.
+
+**Try these questions:**
+- *"What tools does Cole use for RAG?"*
+- *"What bottlenecks exist in AI-augmented development?"*
+- *"What is LangGraph?"*
+
+**Related projects:**
+- **[WhisperingChunks](https://github.com/VinodSridharan/WhisperingChunks-Overview)** – Audio/video transcription service
+- **This repo** – Architecture docs, screenshots, evaluation notes
 
 ---
 
-## 🏗️ Architecture highlights
+## 🎯 Access Tiers
 
-| Component     | Technology               |
-|--------------|--------------------------|
-| Orchestration | LangGraph state graphs   |
-| Backend      | FastAPI (async)          |
-| LLM          | OpenAI GPT‑4o            |
-| Vector Store | Supabase (pgvector)      |
-| Retrieval    | Hybrid (BM25 + semantic) |
-| Deployment   | Google Cloud Run         |
-| Frontend     | Alpine.js + Tailwind CSS |
+| Tier | Access | Best For |
+|------|--------|----------|
+| **Demo (Free)** | Instant, no signup | Quick trials, portfolio review |
+| **Evaluation (Free)** | [Request 7-day key](mailto:vinod.sridharan@txvault.app?subject=MAROL%20Evaluation%20Key%20Request) | Interviews, deep testing, proof-of-concept |
+| **Premium** | [Inquire](mailto:vinod.sridharan@txvault.app?subject=MAROL%20Premium%20Inquiry) | Production use (coming soon with Stripe) |
+| **Developer Services** | [Serious inquiries only](mailto:vinod.sridharan@txvault.app?subject=MAROL%20Developer%20Services) | White-label, custom integration, "we implement it for you" |
+
+---
+
+## 🔑 What Does Evaluation Key Unlock?
+
+Request a **free 7-day Evaluation key** for interviews or deep testing:
+
+| Feature | Demo (Free) | Evaluation (7 days, Free) |
+|---------|------------|---------------------------|
+| **File uploads** | 1 file (10 MB) | 10 files (50 MB each) |
+| **Corpora limit** | 3 max | 3 corpora |
+| **Retention** | 24-hour auto-delete | 7 days (+ 7-day grace period) |
+| **YouTube ingestion** | ❌ | ✅ Any public YouTube URL |
+| **Audio upload** | ❌ | ✅ MP3/WAV/M4A (150 MB max) |
+| **Rate limits** | 5/min, 50/day | Fair use (no hard limits) |
+| **Workspace access** | ❌ | ✅ Corpus management, analytics |
+| **Export formats** | Word/Markdown | Word/Markdown/PDF + evidence annotations |
+
+**Perfect for:** Technical interviews, architecture walkthroughs, evaluation with your own documents
+
+---
+
+## 🔐 Your Key, Your Corpus
+
+**Data isolation guarantee:**
+- Each Evaluation key creates an **isolated workspace** (Row-Level Security in Supabase)
+- Your corpora are **tied exclusively to your key**—no other users can access them
+- When key expires (7 days), you have a **7-day grace period** to request export or extension
+
+**Key security:**
+- One key per user (email-based)
+- Stored in browser `localStorage` (never transmitted except in API headers)
+- Lost key? Email us for replacement (same workspace)
+
+**Data ownership:**
+- You own your uploads and generated answers
+- Export anytime (Word/Markdown/PDF with citations)
+- All corpora deleted after expiration (GDPR/CCPA compliant)
+
+**See [docs/DATA_RETENTION_POLICY.md](docs/DATA_RETENTION_POLICY.md) and [docs/SECURITY_POLICY.md](docs/SECURITY_POLICY.md) for full details.**
+
+---
+
+## 🎫 Request Evaluation Key
+
+**For interviews or portfolio evaluation:**
+
+1. **Email:** [vinod.sridharan@txvault.app](mailto:vinod.sridharan@txvault.app?subject=MAROL%20Evaluation%20Key%20Request)
+2. **Subject:** "MAROL Evaluation Key Request"
+3. **Include (optional):**
+   - Your role (e.g., "Senior Engineer at Acme Corp")
+   - Use case (e.g., "Technical interview preparation")
+   - Focus area (e.g., "RAG architecture review")
+
+**What happens next:**
+- We send you policy links to review ([Content](docs/CONTENT_POLICY.md), [Privacy](docs/PRIVACY_POLICY.md), [Terms](docs/TERMS_OF_SERVICE.md))
+- You confirm acknowledgment
+- We issue your 7-day Evaluation key (usually within 24 hours)
+- Activate key in `/workspace` → unlock all Evaluation features
+
+**Response time:** 24 hours (business days)
+
+---
+
+## 📖 Documentation
+
+- **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** – System architecture, data flow, deployment topology
+- **[docs/HIGHLIGHTS.md](docs/HIGHLIGHTS.md)** – Key metrics, achievements (5-min skim)
+- **[docs/CAPABILITIES.md](docs/CAPABILITIES.md)** – Feature matrix
+- **[CHANGELOG.md](CHANGELOG.md)** – Version history, deployment validation
+- **[SESSION4_FINAL_SUMMARY.md](SESSION4_FINAL_SUMMARY.md)** – Latest session log with smoke test results
+- **[screenshots/](screenshots/)** – Visual tour of the UI
+- **[docs/CONTENT_POLICY.md](docs/CONTENT_POLICY.md)** – What you can upload and ask
+- **[docs/PRIVACY_POLICY.md](docs/PRIVACY_POLICY.md)** – Data handling, GDPR compliance
+- **[docs/TERMS_OF_SERVICE.md](docs/TERMS_OF_SERVICE.md)** – Legal terms, disclaimers
+
+---
+
+## 🛠️ What This Demonstrates
+
+- **End-to-end RAG system design** – Ingestion, hybrid retrieval, grounding, evidence-backed synthesis
+- **Multi-agent orchestration** – LangGraph flows (Research/Direct/Perfection) with state management
+- **Eval-driven development** – Baseline questions, coverage metrics, hallucination tracking
+- **Production deployment** – Cloud Run optimization (<1s cold start), cost control (~$0.02/query)
+- **UI/backend integration** – FastAPI + Alpine.js + Supabase in a cohesive, debuggable system
+- **Technical communication** – Architecture docs, session logs, troubleshooting guides
+
+---
+
+## 🏗️ Architecture Highlights
+
+| Component | Technology |
+|-----------|-----------|
+| **Orchestration** | LangGraph state graphs |
+| **Backend** | FastAPI (async) |
+| **LLM** | OpenAI GPT-4o |
+| **Vector Store** | Supabase pgvector |
+| **Retrieval** | Hybrid (BM25 + semantic) |
+| **Deployment** | Google Cloud Run |
+| **Frontend** | Alpine.js + Tailwind CSS |
 
 **Key metrics:**
-
-- **Coverage:** 16/17 tools (~94%) in Exam‑Ready mode on baseline corpora  
-- **Accuracy:** 100% grounding, zero hallucinations in those evaluations  
-- **Latency:** ~1.8–3.2s for multi‑agent answers  
-- **Cost:** ≈$0.02 / query with caching and Cloud Run autoscaling
-
----
-
-## 🚀 How to explore & how to contact
-
-### Quick exploration guide
-
-1. 📖 Open **`docs/ARCHITECTURE.md`** and **`ANSWER_GURU_BASELINE.md`** to see the overall shape of the system and what "Exam‑Ready" means
-2. 🎨 Skim **`docs/HIGHLIGHTS.md`** and the **`screenshots`** folder to see the console and evidence badges in context
-3. 🌐 Visit the **[live demo](https://marol-backend-467264912930.us-central1.run.app)**, upload a small folder, or use the suggested evaluation questions:
-   - "What tools does Cole use for RAG?"
-   - "What bottlenecks exist in AI‑augmented development?"
-   - "What is LangGraph?"
-
-### 📬 Contact / next steps
-
-- **Email:** [vinod.sridharan@txvault.app](mailto:vinod.sridharan@txvault.app) – for recruiting conversations, technical interviews, or consulting on RAG / multi‑agent architectures
-- **LinkedIn:** [linkedin.com/in/vinod-s-6a565b1b8](https://www.linkedin.com/in/vinod-s-6a565b1b8) – for networking, collaboration, and DM‑based evaluation access
-
-**Mention "MAROL – The Answer Guru System Overview"** if you'd like to walk through the architecture, evaluation harness, or potential adaptations to your environment.
+- **Coverage:** 16/17 tools (94% in Exam-Ready mode)
+- **Accuracy:** 100% grounding, zero hallucinations on frozen test sets
+- **Latency:** <1s cold start, 1.8–3.2s multi-agent queries
+- **Cost:** ~$0.02/query with caching
 
 ---
 
-## 🎯 Interested in…
+## 🗺️ System Architecture
 
-- **🎤 Technical interviews** – Code walkthroughs and architecture discussions  
-- **🏗️ RAG consulting** – Multi‑agent patterns and production deployment strategies  
-- **💼 Full‑time roles** – AI/ML engineering and RAG systems at scale  
-- **🎓 Speaking / workshops** – LangGraph, RAG architectures, and evaluation‑driven design  
+─────────────────────────────────────────────────────────────┐
+│ User Browser │
+│ (Alpine.js + Tailwind UI, Workspace Modal, Evidence View) │
+└────────────────────────┬────────────────────────────────────┘
+│ HTTPS
+▼
+┌─────────────────────────────────────────────────────────────┐
+│ Google Cloud Run (Serverless) │
+│ ┌───────────────────────────────────────────────────────┐ │
+│ │ FastAPI Backend (app.py) │ │
+│ │ - /api/upload-folder - /api/capture-youtube │ │
+│ │ - /api/audio - /rag/query │ │
+│ │ - /api/export-answer - /workspace │ │
+│ └───────────────────────┬───────────────────────────────┘ │
+│ │ │
+│ ┌───────────────────────▼───────────────────────────────┐ │
+│ │ LangGraph Multi-Agent Orchestrator │ │
+│ │ ┌─────────────┐ ┌──────────────┐ ┌─────────────┐ │ │
+│ │ │ Research │→ │ Direct │→ │ Perfection │ │ │
+│ │ │ Agent │ │ Agent │ │ Agent │ │ │
+│ │ └─────────────┘ └──────────────┘ └─────────────┘ │ │
+│ └───────────────────────┬───────────────────────────────┘ │
+└──────────────────────────┼───────────────────────────────────┘
+│
+┌──────────────────┼──────────────────┐
+▼ ▼ ▼
+┌────────────────┐ ┌──────────────┐ ┌─────────────────┐
+│ OpenAI API │ │ Supabase │ │ WhisperingChunks│
+│ (GPT-4o) │ │ (pgvector) │ │ (External) │
+│ - Synthesis │ │ - Chunks │ │ - Transcription│
+│ - Reasoning │ │ - Embeddings│ │ - Chunking │
+└────────────────┘ │ - API Keys │ └─────────────────┘
+│ - RLS │
+└──────────────┘
 
-This repo is designed to make it easy to assess how this system—and the person behind it—approaches **production‑grade, AI‑native workflows**.
+
+---
+
+## 🛡️ Safety & Grounding
+
+**MAROL refuses to answer questions outside your uploaded corpora:**
+
+- ❌ **No financial advice** – *"Should I invest in X?"* → Rejected
+- ❌ **No medical advice** – *"Do I have cancer?"* → Rejected
+- ❌ **No legal advice** – *"Can I sue my employer?"* → Rejected
+- ❌ **No off-topic questions** – *"What's the weather?"* → Rejected
+
+**Standard rejection:**  
+*"I can only answer questions about the content in your uploaded corpora. I don't provide financial, medical, or legal advice."*
+
+**Grounding mechanisms:**
+- **Single-chunk literal mode:** Answers must be supported by at least one retrieved chunk
+- **Perfection mode:** Definitions require exact matches in source material
+- **Evidence badges:** Every answer shows route (Research/Direct/Perfection), confidence %, chunk count
+- **Exam-Ready mode:** Stricter routing, explicit "I don't know" when confidence is low
+
+**See [SAFETY.md](SAFETY.md) for full safety policies.**
+
+---
+
+## 🙏 Acknowledgments
+
+MAROL builds on the work of open-source projects and thought leaders:
+
+- **[Cole Medin (coleam00)](https://github.com/coleam00)** – LangGraph RAG patterns, multi-agent orchestration research that inspired MAROL's architecture
+- **LangChain & LangGraph** – Foundational frameworks for stateful multi-agent workflows
+- **Supabase** – Open-source backend infrastructure (pgvector, authentication, RLS)
+- **OpenAI** – GPT-4o API for synthesis and reasoning
+- **FastAPI** – High-performance async Python web framework
+
+Special thanks to the RAG research community for advancing retrieval-augmented generation patterns and evaluation methodologies.
+
+---
+
+## ⚖️ Legal & Privacy
+
+**Quick disclaimers:**
+- **No professional advice:** MAROL does not provide financial, medical, or legal advice
+- **Corpus-only answers:** Responses strictly limited to your uploaded documents
+- **AS-IS service:** No warranties on accuracy or availability
+- **Data retention:** 24 hours (Demo), 7 days + grace period (Evaluation)
+
+**Your rights:**
+- **GDPR/CCPA compliant:** Right to access, export, and delete your data
+- **Data ownership:** You own your uploads and generated answers
+- **Privacy-first:** No tracking cookies, minimal data collection
+
+**Full policies:**
+- [Privacy Policy](docs/PRIVACY_POLICY.md)
+- [Terms of Service](docs/TERMS_OF_SERVICE.md)
+- [Content Policy](docs/CONTENT_POLICY.md)
+- [Acceptable Use Policy](docs/ACCEPTABLE_USE_POLICY.md)
+- [Data Retention Policy](docs/DATA_RETENTION_POLICY.md)
+- [Security Policy](docs/SECURITY_POLICY.md)
+
+---
+
+## 🎯 How to Explore
+
+**5-minute quick start:**
+
+1. **[Try the live demo](https://marol-backend-467264912930.us-central1.run.app/)** – Upload a small PDF, ask a question
+2. **Skim [docs/HIGHLIGHTS.md](docs/HIGHLIGHTS.md)** – Key metrics and achievements
+3. **Browse [screenshots/](screenshots/)** – Visual tour of evidence badges, workspace UI
+
+**Deep dive (30 minutes):**
+
+1. **Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** – System design and data flow
+2. **Review [CHANGELOG.md](CHANGELOG.md)** – v2.1 deployment validation
+3. **Check [SESSION4_FINAL_SUMMARY.md](SESSION4_FINAL_SUMMARY.md)** – Latest smoke test results
+
+**Request Evaluation key:**
+
+[Email for 7-day key →](mailto:vinod.sridharan@txvault.app?subject=MAROL%20Evaluation%20Key%20Request)
+
+---
+
+## 📧 Contact & Next Steps
+
+**For interviews or portfolio evaluation:**  
+Email: [vinod.sridharan@txvault.app](mailto:vinod.sridharan@txvault.app)  
+LinkedIn: [linkedin.com/in/vinod-s-6a565b1b8](https://linkedin.com/in/vinod-s-6a565b1b8)
+
+**Mention "MAROL Evaluation"** to discuss:
+- Technical interviews and code walkthroughs
+- Architecture reviews and system design discussions
+- RAG consulting and multi-agent patterns
+- Collaboration on AI/LLM projects
+
+**Response time:** 24 hours (business days)
+
+---
+
+## 🤝 Interested In...
+
+- **Technical interviews** – Deep dives into LangGraph orchestration, RAG architecture, production deployment
+- **Full-time roles** – AI/ML engineering, RAG systems at scale, multi-agent orchestration
+- **Consulting** – Production LLM deployment patterns, evaluation frameworks, cost/security optimization
+- **Speaking & workshops** – LangGraph, RAG architectures, eval-driven development
+
+This repo is designed to make it easy to assess how this system—and the person behind it—approaches production-grade, AI-native workflows.
 
 ---
 
 ## 📄 License
 
-MIT License – see `LICENSE`.
+**Documentation:** MIT License – see [LICENSE](LICENSE)
 
-**Note:** This repository contains documentation and overview only. The live system is proprietary. For evaluation access or technical collaboration, email [vinod.sridharan@txvault.app](mailto:vinod.sridharan@txvault.app).
+**Note:** This repository contains **documentation and overview only**. The live MAROL system is proprietary. For Evaluation access or collaboration, email [vinod.sridharan@txvault.app](mailto:vinod.sridharan@txvault.app).
 
 ---
 
 <div align="center">
 
-**Built by Vinod Sridharan**  
-Demonstrating production‑grade multi‑agent RAG system design and advanced LLM orchestration  
+**Built by Vinod Sridharan**
 
-**Latest Update:** 2026‑01‑19 · **Status:** Production · **Version:** v2.1
+*Demonstrating production-grade multi-agent RAG system design and advanced LLM orchestration*
+
+**Latest Update:** 2026-01-20 · **Status:** Production · **Version:** v2.1.1
+
+---
+
+[![Try Live Demo](https://img.shields.io/badge/Try-Live%20Demo-purple?style=flat-square)](https://marol-backend-467264912930.us-central1.run.app/) 
+[![Request Evaluation Key](https://img.shields.io/badge/Request-Evaluation%20Key-blue?style=flat-square)](mailto:vinod.sridharan@txvault.app?subject=MAROL%20Evaluation%20Key%20Request)
+[![Email](https://img.shields.io/badge/Email-vinod.sridharan%40txvault.app-red?style=flat-square)](mailto:vinod.sridharan@txvault.app)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat-square)](https://linkedin.com/in/vinod-s-6a565b1b8)
 
 </div>
 
