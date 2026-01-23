@@ -23,13 +23,22 @@ Production multi-agent RAG lab delivering **Exam-Ready answers**, **16/17 tools 
 
 ---
 
-## 🚀 What's New in v2.1.1 (January 20, 2026)
+## What's New in v2.2 (January 22, 2026)
 
-**Performance breakthrough:** Cold start optimized from 16 seconds → **<1 second**
+**Backend enhancements:**
+- ✅ YouTube ingestion complete (WhisperingChunks integration, multi-language support)
+- ✅ Database schema migration (UUID standardization)
+- ✅ Automated cleanup functions (evaluation key expiration, corpus deletion)
 
-**UI improvements:** Mobile touch targets, keyboard shortcuts (`Ctrl+Enter`, `Escape`), focus rings, ARIA labels
+**UI polish:**
+- ✅ Keyboard accessibility (Escape closes modals, Tab focus traps)
+- ✅ Evidence badges (route, confidence, chunk count - prominent display)
+- ✅ Dynamic answer area (starts small, grows with content)
+- ✅ Loading spinners (animated, clearer phase indicators)
 
-**Validation:** Step 1 + Step 2 smoke tests complete • 6/8 PASS, 2/8 PASS-minor • Production-ready
+**Developer experience:**
+- ✅ Automated smoke tests (4 end-to-end tests, GitHub Actions CI)
+- ✅ Comprehensive documentation (TECHNICAL_SPECIFICATION, WHY_THIS_IS_AWESOME)
 
 ---
 
@@ -81,14 +90,97 @@ No signup required. Upload a file, ask a question, see evidence-backed answers i
 
 ---
 
-## 🎯 Access Tiers
+## 🎯 Your Use Case, Our Mission
 
-| Tier | Access | Best For |
-|------|--------|----------|
-| **Demo (Free)** | Instant, no signup | Quick trials, portfolio review |
-| **Evaluation (Free)** | [Request 7-day key](mailto:vinod.sridharan@txvault.app?subject=MAROL%20Evaluation%20Key%20Request) | Interviews, deep testing, proof-of-concept |
-| **Premium** | [Inquire](mailto:vinod.sridharan@txvault.app?subject=MAROL%20Premium%20Inquiry) | Production use (coming soon with Stripe) |
-| **Developer Services** | [Serious inquiries only](mailto:vinod.sridharan@txvault.app?subject=MAROL%20Developer%20Services) | White-label, custom integration, "we implement it for you" |
+**Skip the demo. Tell us what you need.**
+
+MAROL adapts to YOUR workflow. Have a specific use case? We'll set you up with a workspace tailored to it.
+
+### Example Use Cases
+- 📧 **Email Archive Analysis**: "Search 5 years of .eml files for action items and follow-ups"
+- 📊 **Financial Document QA**: "Extract metrics from quarterly reports and board decks"
+- 🔬 **Research Paper Search**: "Find methodology patterns across 200 papers"
+- 📋 **Contract Review**: "Identify non-standard clauses in vendor agreements"
+- 📝 **Meeting Notes QA**: "What decisions were made about the Phoenix project?"
+
+### How It Works
+1. **Email us your use case**: vinod.sridharan@txvault.app
+2. **Get a Collaborator key**: Custom workspace, 30-day access
+3. **Upload your corpus**: Your documents, your questions
+4. **Help shape MAROL**: Your use case informs our roadmap
+
+---
+
+## Access Tiers
+
+| Tier | Access | Best For | Duration | Cost |
+|------|--------|----------|----------|------|
+| **🎯 Collaborator** | **Request with use case** | **Custom workflows, real validation** | **30 days** | **Free** |
+| Demo | Free, instant | Quick portfolio review | 24 hours | Free |
+| Evaluation | Request 7-day key | Interviews, testing | 7 days | Free |
+| Premium | Coming soon | Production, unlimited | Monthly | $20/mo |
+| Developer | Services only | White-label, custom | Custom | Contact |
+
+---
+
+## 🚀 Why Collaborator Access?
+
+### ✅ For You
+- **Your Data**: Upload your actual corpus, not demo files
+- **Your Workflow**: We adapt to YOUR use case
+- **Zero Cost**: 30 days free, full features
+- **Direct Influence**: Your use case shapes our roadmap
+- **Priority Support**: Direct feedback channel
+
+### ✅ For Us
+- **Real Validation**: Test with actual use cases
+- **Feature Discovery**: Learn what users need
+- **Roadmap Guidance**: Build what matters
+- **Demo Material**: Real use cases = better demos
+
+### ✅ For Everyone
+- **Better Product**: Features from real needs
+- **Documentation**: Use cases become tutorials
+- **No Idea Lost**: Every request documented
+
+---
+
+## 📋 Request Collaborator Access
+
+**Email**: vinod.sridharan@txvault.app  
+**Subject**: MAROL Collaborator - [Your Use Case]
+
+**Include**:
+1. **What you want to do**: 2-3 sentences
+2. **Document types**: .pdf, .eml, .docx, etc.
+3. **Example questions**: 3-5 questions you'll ask
+4. **Why it matters**: What problem this solves
+
+**What you get**:
+- ✅ Collaborator key (30 days)
+- ✅ Full upload capabilities
+- ✅ Your use case shown in UI
+- ✅ Direct feedback loop
+- ✅ Feature roadmap consideration
+
+**Response time**: 24-48 hours
+
+---
+
+## Evaluation & Demo Access
+
+**Still want to explore first?**
+
+### 🔑 Evaluation (7 days)
+Perfect for technical interviews and architecture reviews.
+
+**Request key**: vinod.sridharan@txvault.app  
+**Subject**: MAROL Evaluation Key Request
+
+### 🎨 Demo (24 hours)
+Try the live system instantly: [https://marol-backend-467264912930.us-central1.run.app](https://marol-backend-467264912930.us-central1.run.app)
+
+**But seriously**: If you have a real use case, skip the demo and request Collaborator access. It's faster and more useful.
 
 ---
 

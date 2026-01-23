@@ -60,6 +60,40 @@ This policy governs what you can upload and ask.
 
 ---
 
+## Allowed Medical Content (Your Corpus)
+
+You MAY upload medical documents to YOUR corpus:
+- ✅ Lab results and test reports
+- ✅ Imaging reports (MRI, CT, X-ray findings)
+- ✅ Discharge summaries
+- ✅ Doctor's notes and clinical documentation
+- ✅ Medication lists
+- ✅ Medical research papers
+- ✅ Clinical trial data
+
+**Requirements**:
+1. You own or have permission to upload these documents
+2. You understand MAROL extracts information but does NOT provide medical advice
+3. You consult healthcare professionals for medical decisions
+4. You are responsible for HIPAA compliance if applicable
+
+## Medical Use Cases (COLLABORATOR Mode)
+
+**Example**: "Analyze my medical records to find all mentions of medication changes over 3 years"
+
+**What you get**:
+- Extract factual information from YOUR documents
+- Search across YOUR medical records
+- Summarize YOUR clinical notes
+- Find references to specific conditions, medications, or dates
+
+**What you DON'T get**:
+- Medical advice or recommendations
+- Clinical interpretation of findings
+- Diagnosis or treatment suggestions
+
+---
+
 ## 🛡️ Prompt Injection Attempts
 
 **Examples of prohibited behavior:**
