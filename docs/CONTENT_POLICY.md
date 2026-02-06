@@ -18,7 +18,7 @@ This policy governs what you can upload and ask.
 
 | Tier | Max File Size | Max Upload | Max Corpora |
 |------|--------------|-----------|-------------|
-| **Demo** | 10 MB | 1 file | 3 corpora |
+| **Demo** | 10 MB | 1 file | 1 session (5 questions) |
 | **Evaluation** | 50 MB | 10 files | 3 corpora |
 | **Premium** | 100 MB | Unlimited | Unlimited |
 

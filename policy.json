@@ -114,7 +114,26 @@
       "If YES to either: DO NOT add"
     ]
   },
+  "public_policy_docs": [
+    "docs/ACCEPTABLE_USE_POLICY.md",
+    "docs/ARCHITECTURE.md",
+    "docs/CAPABILITIES.md",
+    "docs/CONTENT_POLICY.md",
+    "docs/CORPUS_ISOLATION_POLICY.md",
+    "docs/DATA_RETENTION_POLICY.md",
+    "docs/HIGHLIGHTS.md",
+    "docs/OVERVIEW.md",
+    "docs/PRIVACY_POLICY.md",
+    "docs/REPO_STRUCTURE.md",
+    "docs/SECURITY_POLICY.md",
+    "docs/TERMS_OF_SERVICE.md",
+    "docs/policies/PUBLIC/ACCEPTABLE_USE_POLICY.md",
+    "docs/policies/PUBLIC/DATA_RETENTION_POLICY.md",
+    "docs/policies/PUBLIC/DEMO_POLICY.md",
+    "docs/policies/PUBLIC/EVALUATION_POLICY.md",
+    "docs/policies/PUBLIC/SECURITY_POLICY.md"
+  ],
   "version": "1.0",
-  "last_updated": "2026-01-10",
+  "last_updated": "2026-01-28",
   "schema_version": "1.0"
 }
