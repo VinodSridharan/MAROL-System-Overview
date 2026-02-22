@@ -1,64 +1,3 @@
-# MAROL — Multi-Agent Reasoning Orchestration Lab
-
-**Upload a file. Ask a question. Get grounded answers over your own data.**
-
-MAROL is a production RAG console and portfolio artifact for hiring managers,
-technical evaluators, and practitioners who want to see real multi-agent
-system design — not a toy notebook.
-
-<p align="center">
-  <img src="screenshots/SkySwim200.png" alt="MAROL Logo" width="220" />
-</p>
-
-<p align="center">
-  <a href="#try-it-in-30-seconds">
-    <img src="https://img.shields.io/badge/demo-v2.3.0--alpha.1-blue"
-         alt="Version"></a>
-  <a href="#current-production-status">
-    <img src="https://img.shields.io/badge/status-production-green"
-         alt="Status"></a>
-  <a href="LICENSE">
-    <img src="https://img.shields.io/badge/license-private-important"
-         alt="License"></a>
-  <a href="https://github.com/VinodSridharan/MAROL-System-Overview/stargazers">
-    <img src="https://img.shields.io/github/stars/VinodSridharan/
-         MAROL-System-Overview?style=social"
-         alt="Stars"></a>
-</p>
-
----
-
-## Try It in 30 Seconds
-
-1. Upload a single PDF, DOCX, or image.
-2. MAROL summarizes it and generates five smart questions.
-3. Click a question or ask your own.
-4. Inspect the answer and its **evidence chips** — every claim
-   points back to the source chunk.
-
-![MAROL console with grounded answer and evidence chips](
-screenshots/answer-with-evidence.png)
-
-> **Start here.**
-> Upload one document and ask three questions.
-> Everything else — YouTube ingestion, tiered access,
-> multi-agent routing — builds on that same grounded RAG core.
-
----
-
-## Why MAROL
-
-| | |
-|---|---|
-| **Grounded answers** | Every response cites the exact chunks it used. No confident hallucinations. |
-| **Multi-modal ingestion** | PDFs, DOCX, images, YouTube URLs, audio files — one unified pipeline. |
-| **Multi-agent routing** | Research, Direct, and Perfection modes chosen per query. |
-| **Production-deployed** | Google Cloud Run + Supabase/pgvector. Real infrastructure, not a demo notebook. |
-| **Tiered access** | Safe for live demos; deeper access available for evaluators and collaborators. |
-| **Tamil YouTube proven** | Whisper-transcribed Gen AI explainer in Tamil with grounded English/Tamil Q&A. |
-
----
-
 ## System Architecture
 
 ```mermaid
@@ -103,6 +42,7 @@ Perfection	High-stakes answers	Multiple passes, explicit evidence review
 Routing depends on question complexity, tier, and live retrieval quality.
 
 RAG Pipeline
+
 flowchart LR
     In([Input\nFile · URL · Audio])
     Parse[Parse + Normalize]
@@ -131,7 +71,7 @@ Optional keyword filters and per-session corpus isolation.
 Tier limits enforced per query.
 
 Synthesis
-Combine top-k chunks into a grounded answer.
+Combine top‑k chunks into a grounded answer.
 
 Attach clickable evidence snippets with source references.
 
@@ -144,15 +84,16 @@ Tier limit — enforces file and query limits per session tier.
 
 Input shape — rejects oversized or malformed inputs.
 
-Content safety — screens for out-of-scope content.
+Content safety — screens for out‑of‑scope content.
 
 Grounding — requires sufficient evidence before a confident answer.
 
 Answer style — prefers sourced, transparent responses.
 
-Fallback — returns "I don't know" when retrieval is weak.
+Fallback — returns “I don’t know” when retrieval is weak.
 
 Deployment
+
 flowchart TD
     GCR[Google Cloud Run\nmarol-backend]
     CB[Cloud Build\nDockerfile + cloudbuild.yaml]
@@ -166,13 +107,10 @@ flowchart TD
     GCR --> SB
     GCR --> GCS
 Backend: Containerized FastAPI on Google Cloud Run.
-CPU-only image: 5.88s cold start, 3.66s warm.
+CPU‑only image: 5.88s cold start, 3.66s warm.
 
-Database: Supabase Postgres with pgvector for
-vector similarity search.
-
+Database: Supabase Postgres with pgvector for vector similarity search.
 Storage: Google Cloud Storage for uploads and artifacts.
-
 Build: Google Cloud Build — 8m 53s build time.
 
 Access Tiers
@@ -193,11 +131,11 @@ Database	Supabase Postgres
 Vector search	pgvector
 Object storage	Google Cloud Storage
 Transcription	OpenAI Whisper
-Embeddings + LLM	OpenAI (GPT-4o)
+Embeddings + LLM	OpenAI (GPT‑4o)
 Frontend	Lightweight HTML + JS
 Getting Started
-This repository is a system overview and portfolio artifact, not a
-one-click product. It documents the live MAROL deployment.
+This repository is a system overview and portfolio artifact, not a one‑click product.
+It documents the live MAROL deployment.
 
 1. Try the Demo
 When the public demo is open, a Demo URL will appear here.
@@ -214,12 +152,11 @@ Inspect the answer and its evidence chips.
 
 Paste a YouTube URL and ask a question about the video.
 
-If no demo URL is shown, the environment is restricted to
-Evaluation and Collaborator tiers.
+If no demo URL is shown, the environment is restricted to Evaluation and Collaborator tiers.
 
 2. Request Access
-To evaluate MAROL with your own data or explore collaboration,
-email vinod.sridharan@txvault.app with:
+To evaluate MAROL with your own data or explore collaboration, email
+vinod.sridharan@txvault.app with:
 
 Subject: MAROL Evaluation Request or MAROL Collaboration
 
@@ -229,8 +166,7 @@ Types of data you want to evaluate
 
 What you want to learn
 
-You will receive a short questionnaire, a proposed evaluation scope,
-and a suggested timeline.
+You will receive a short questionnaire, a proposed evaluation scope, and a suggested timeline.
 
 Documentation
 File	Contents
@@ -240,22 +176,19 @@ CHANGELOG.md	Version history and capability changes
 docs/ARCHITECTURE.md	Deeper technical design and data flow
 screenshots/	Demo screenshots
 Acknowledgments
-Cole Medin (coleam00) — Early LangGraph RAG patterns that
-influenced MAROL's multi-agent design.
+Cole Medin (coleam00) — Early LangGraph RAG patterns that influenced MAROL’s multi-agent design.
 
-LangChain / LangGraph — Foundational frameworks for agentic
-orchestration.
+LangChain / LangGraph — Foundational frameworks for agentic orchestration.
 
-Supabase — Open-source backend powering Postgres, pgvector,
-and session management.
+Supabase — Open‑source backend powering Postgres, pgvector, and session management.
 
-OpenAI — GPT-4o, Whisper, and embeddings APIs.
+OpenAI — GPT‑4o, Whisper, and embeddings APIs.
 
 FastAPI — Fast, type-safe Python web framework.
 
 Current Production Status
 Field	Value
-Version	v2.3.0-alpha.1
+Version	v2.3.0‑alpha.1
 Deployed to	Google Cloud Run (backend)
 Database	Supabase Postgres + pgvector
 Last updated	February 22, 2026
@@ -266,8 +199,7 @@ Build time	8m 53s
 Built by Vinod Sridharan
 Production-grade multi-agent RAG system design and LLM orchestration
 
-![GitHub Stars](https://img.shields.io/github/stars/VinodSridharan/
-MAROL-System-Overview?style=social)
+GitHub Stars
 
 Questions or collaboration?
 Email vinod.sridharan@txvault.app · Connect on LinkedIn
