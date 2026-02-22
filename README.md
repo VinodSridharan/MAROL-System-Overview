@@ -1,18 +1,29 @@
-# MAROL - Multi-Agent Reasoning Orchestration Lab
+# MAROL — Multi-Agent Reasoning Orchestration Lab
 
 **Upload a file. Ask a question. Get grounded answers over your own data.**
 
-MAROL is documented here as a production RAG console and portfolio artifact for hiring managers, technical evaluators, and practitioners who want to see real multi-agent system design.
+MAROL is a production RAG console and portfolio artifact for hiring managers,
+technical evaluators, and practitioners who want to see real multi-agent
+system design — not a toy notebook.
 
 <p align="center">
   <img src="screenshots/SkySwim200.png" alt="MAROL Logo" width="220" />
 </p>
 
 <p align="center">
-  <a href="#try-it-in-30-seconds"><img src="https://img.shields.io/badge/demo-v2.3.0--alpha.1-blue" alt="Version badge"></a>
-  <a href="#current-production-status"><img src="https://img.shields.io/badge/status-production-green" alt="Status badge"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-private-important" alt="License badge"></a>
-  <a href="https://github.com/VinodSridharan/MAROL-System-Overview/stargazers"><img src="https://img.shields.io/github/stars/VinodSridharan/MAROL-System-Overview?style=social" alt="GitHub stars"></a>
+  <a href="#try-it-in-30-seconds">
+    <img src="https://img.shields.io/badge/demo-v2.3.0--alpha.1-blue"
+         alt="Version"></a>
+  <a href="#current-production-status">
+    <img src="https://img.shields.io/badge/status-production-green"
+         alt="Status"></a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/license-private-important"
+         alt="License"></a>
+  <a href="https://github.com/VinodSridharan/MAROL-System-Overview/stargazers">
+    <img src="https://img.shields.io/github/stars/VinodSridharan/
+         MAROL-System-Overview?style=social"
+         alt="Stars"></a>
 </p>
 
 ---
@@ -20,404 +31,245 @@ MAROL is documented here as a production RAG console and portfolio artifact for 
 ## Try It in 30 Seconds
 
 1. Upload a single PDF, DOCX, or image.
-2. MAROL summarizes it and generates five smart questions about the file.
+2. MAROL summarizes it and generates five smart questions.
 3. Click a question or ask your own.
-4. Inspect the answer and its evidence badges to see exactly where it came from.
+4. Inspect the answer and its **evidence chips** — every claim
+   points back to the source chunk.
 
-### What It Looks Like
+![MAROL console with grounded answer and evidence chips](
+screenshots/answer-with-evidence.png)
 
-![MAROL console with grounded answer and evidence chips](screenshots/answer-with-evidence.png)
-
-*MAROL console showing a file attach demo with grounded answer and evidence chips.*
-
-> 📎 **Try your file first.**  
-> The easiest way to understand MAROL is to upload one document and ask a few questions. Everything else (YouTube, email, advanced workflows) builds on that same grounded RAG engine.
+> **Start here.**
+> Upload one document and ask three questions.
+> Everything else — YouTube ingestion, tiered access,
+> multi-agent routing — builds on that same grounded RAG core.
 
 ---
 
-## Why This Is Awesome
+## Why MAROL
 
-MAROL is a **Multi-Agent Reasoning Orchestration Lab** – a place to prototype, harden, and demo real-world RAG patterns that behave like teammates, not toys.
-
-### 🎯 Speed – File Attach & Voice That Feel Instant
-
-- 30-second file attach demo: upload once, get a summary + five smart questions, then ask follow-ups.
-- Lightweight UI hits a production backend (FastAPI + LangGraph), not a toy notebook.
-- Designed for live demos and interviews where you only have a few minutes.
-
-### 🌍 Multilingual RAG – Proven on Tamil YouTube
-
-- Ingests YouTube and audio, transcribes with Whisper, and builds a transcript-backed RAG index.
-- Shipped demo: Gen AI concepts video in Tamil with grounded Q&A in English or Tamil.
-- Same pipeline works for other long-form audio/video in many languages.
-
-### 🔬 Grounding & Safety – Answers You Can Inspect
-
-- Every answer comes with evidence chips that show which chunks were retrieved.
-- Safety harness prefers "I don't know" over confident hallucinations when evidence is weak.
-- Policies and isolation docs (in `docs/`) explain how MAROL treats data and access.
-
-### 🏗️ Orchestration – Multi-Agent Reasoning That Scales
-
-- Router chooses between Research, Direct, and Perfection modes based on question and tier.
-- Ingestion agents handle files, YouTube/audio, and email archives into a unified vector index.
-- Deployed on Google Cloud Run with Supabase/pgvector – a realistic blueprint for production RAG.
+| | |
+|---|---|
+| **Grounded answers** | Every response cites the exact chunks it used. No confident hallucinations. |
+| **Multi-modal ingestion** | PDFs, DOCX, images, YouTube URLs, audio files — one unified pipeline. |
+| **Multi-agent routing** | Research, Direct, and Perfection modes chosen per query. |
+| **Production-deployed** | Google Cloud Run + Supabase/pgvector. Real infrastructure, not a demo notebook. |
+| **Tiered access** | Safe for live demos; deeper access available for evaluators and collaborators. |
+| **Tamil YouTube proven** | Whisper-transcribed Gen AI explainer in Tamil with grounded English/Tamil Q&A. |
 
 ---
 
 ## System Architecture
 
-MAROL is a production RAG console built around three ideas:
-
-- Multi-agent orchestration for routing and refinement.
-- Strict grounding on curated corpora and transcripts.
-- Tiered access for demos, evaluations, and collaborators.
-
----
-
-## High-Level Data Flow
-
-```text
-[Browser UI]
-   |
-   v
-[FastAPI Backend] --(LangGraph Orchestrator)--> [Agents]
-   |
-   +--> [Ingestion Pipelines]
-   |       - File Uploads
-   |       - YouTube / Audio
-   |       - Email Archives
-   |
-   +--> [RAG Pipeline]
-           - Text Cleaning & Chunking
-           - Embeddings
-           - Vector + Metadata Index (Supabase / pgvector)
-           - Hybrid Retrieval (semantic + keyword)
-           - Answer Synthesis w/ Evidence Badges
-```
-
----
-
-## Multi-Agent Orchestration
-
-Router Agent decides between:
-
-- Research (deeper multi-hop reasoning, more retrieval).
-- Direct (fast answers for simple, well-scoped questions).
-- Perfection (slower, high-quality refinement when stakes are higher).
-
-Ingestion Agents handle:
-
-- YouTube/audio: download, transcribe, chunk, and write transcript segments to the vector store.
-- Files: parse PDFs/DOCX/images, run OCR where needed, and build document-centric chunks.
-- Email: parse `.eml`, preserve threads and metadata, and expose message-level retrieval.
-
-Safety & Guardrails Agent:
-
-- Performs content and context checks.
-- Can veto or soften an answer if evidence is weak or the request violates constraints.
-
----
-
-## RAG Pipeline
-
-### Ingestion
-
-- Normalize input (text, HTML, audio transcripts).
-- Chunk with overlap, preserving semantic boundaries where possible.
-
-### Indexing
-
-- Compute embeddings.
-- Store embeddings, metadata, and corpus IDs in Supabase with pgvector.
-
-### Retrieval
-
-- Use semantic similarity and optional keyword filters.
-- Apply per-session tenanting and tier limits.
-
-### Synthesis
-
-- Combine top chunks.
-- Generate an answer that stays close to the source.
-- Attach clickable evidence snippets.
-
----
-
-## Deployment Architecture
-
-### Backend
-
-- Containerized FastAPI application.
-- Built via Google Cloud Build and deployed to Google Cloud Run.
-
-### Data Layer
-
-- Supabase Postgres with pgvector for vector similarity search.
-
-### Sessions & Tiers
-
-- `marol_session_id` cookie identifies the current session.
-- Supabase tracks usage and tier (demo, evaluation, collaborator) per session.
-
-### Frontend
-
-- Lightweight HTML + JavaScript console focused on:
-  - File attach UX.
-  - YouTube/URL entry.
-  - Chat interface with evidence chips.
-  - Tier/usage hints and modals.
-
----
-
-## Text-Based Architecture Diagram
-
-```text
-+-------------------------+          +--------------------------+
-|       Browser UI        |  HTTPS   |      Cloud Run (API)     |
-|  - Upload form          +--------->+  - FastAPI               |
-|  - YouTube URL field    |          |  - LangGraph Orchestrator|
-|  - Chat + evidence view |          |  - Tier & session checks |
-+-----------+-------------+          +------------+-------------+
-            ^                                       |
-            |                                       |
-            |                         +-------------v-------------+
-            |                         |      Ingestion Layer      |
-            |                         | - File parsers            |
-            |                         | - YouTube/Whisper client  |
-            |                         | - Email parsers           |
-            |                         +-------------+-------------+
-            |                                       |
-            |                                       v
-            |                         +-------------+-------------+
-            |                         |   Supabase (Postgres)     |
-            |                         |   + pgvector extension    |
-            |                         | - Chunks & embeddings     |
-            |                         | - Sessions & tier usage   |
-            |                         +-------------+-------------+
-            |                                       ^
-            |                                       |
-            +---------------------------------------+
-                      RAG retrieval & evidence
-```
-
----
-
-## Access Tiers
-
-MAROL v2.3 introduces a tiered access system so you can safely demo the console while reserving deeper access for evaluators and collaborators.
-
-| Tier           | Typical Use Case                             | Limits (example)          | What You Get                                                            | CTA                        |
-|----------------|----------------------------------------------|---------------------------|-------------------------------------------------------------------------|----------------------------|
-| **Demo**       | Quick interviews, first look at MAROL        | 1 file, 5 questions       | File attach demo, Tamil YouTube sample, evidence-badged answers        | Try demo in browser        |
-| **Evaluation** | Teams testing MAROL on their own documents   | Higher file & query limits| Custom corpora, folder/email ingestion, more cautious "Perfection" mode | Request evaluation key     |
-| **Collaborator** | Deep technical reviews & co-building      | Highest limits, flexible  | Access to more agents/flows, architecture sessions, code-level review   | Request collaborator access|
-
-> 💡 **Upgrade path:** Start in Demo, then move to Evaluation when you're ready to test your own data. Collaborator access is for deeper technical partnerships and architecture reviews.
-
----
-
-## v2.3 Capabilities
-
-This README describes MAROL v2.3.0-alpha.1, focused on a robust tier backend, multimodal ingestion, and strong grounding.
-
-### Tier System (Demo / Evaluation / Collaborator)
-
-As summarized in **Access Tiers**, MAROL uses backend-enforced limits per session:
-
-- Demo: 1 file, 5 questions.
-- Evaluation & Collaborator: higher but controlled limits.
-
-Tier information and usage are stored in Supabase tables keyed by `marol_session_id`.
-
-### File Upload with Summaries + 5 Questions
-
-Building on the "Try It in 30 Seconds" flow:
-
-- Upload a single file in Demo tier.
-- MAROL:
-  - Parses and chunks the content.
-  - Generates a short summary.
-  - Produces 5 curated questions about that file.
-  - Lets you click a question or type your own.
-- Answers come with evidence chips that point to the exact chunks used.
-
-### YouTube / Audio with Whisper
-
-Input:
-
-- YouTube URL.
-- Supported audio file.
-
-Pipeline:
-
-- Download or accept audio.
-- Transcribe via Whisper API.
-- Chunk the transcript and embed segments.
-- Route queries through the same RAG pipeline as documents.
-
-This pipeline has been proven in production with a Tamil-language Gen AI explainer video, including correct retrieval and grounded Q&A.
-
-### Multi-Agent Routing (Research / Direct / Perfection)
-
-- Research for deeper, multi-hop questions.
-- Direct for quick, low-latency responses when the mapping to chunks is straightforward.
-- Perfection for high-stakes answers that benefit from multiple passes and explicit evidencing.
-- Routing depends on question complexity, tier, and retrieval quality.
-
-### Session Management
-
-- MAROL assigns a `marol_session_id` cookie to each browser session.
-- The backend uses this to:
-  - Track tier-specific usage (files uploaded, queries made).
-  - Enforce limits without requiring sign-up.
-  - Provide consistent behavior across tabs and reloads for a given browser.
-
-### Safety Harness (6 Checks)
-
-MAROL's safety harness runs multiple checks per request, including:
-
-- Tier limit check – enforces file and query limits based on session tier.
-- Input size and shape check – rejects inputs that are too large or malformed.
-- Content safety check – screens for content the system should not process.
-- Grounding check – ensures there is sufficient evidence before returning a confident answer.
-- Answer style check – encourages transparent, sourced responses over speculative ones.
-- Fallback / "I don't know" path – provides safe degradation when retrieval is weak or the corpus is missing relevant information.
-
----
-
-## Tech Stack
-
-### Core Backend
-
-- Language: Python 3.11
-- Web Framework: FastAPI
-- Orchestration: LangGraph-based multi-agent workflows for routing and refinement.
-- Environment: Containerized app deployed to Google Cloud Run.
-
-### Data & Storage
-
-- Database: Supabase Postgres.
-- Vector Store: pgvector extension in Supabase for semantic search.
-- Object Storage: Used for uploaded files and intermediate artifacts (depending on deployment configuration).
-
-### Retrieval & Reasoning
-
-RAG pattern:
-
-- Text normalization and chunking.
-- Embeddings + pgvector similarity search.
-- Hybrid retrieval (semantic + lexical where applicable).
-- Answer generation with evidence highlighting.
-
-Agents:
-
-- Router, ingestion, safety, research, and refinement agents orchestrated via LangGraph.
-
-### Frontend
-
-- Lightweight HTML/JS console.
-- Focused on:
-  - File attach UX.
-  - YouTube/URL entry.
-  - Chat interface with evidence chips.
-  - Tier/usage hints and upsell modals.
-
----
-
-## Getting Started
-
-This repository is a **system overview and portfolio artifact**, not a one-click product. It documents the live MAROL deployment and is designed to showcase production-grade multi-agent RAG design.
-
-### 1. Try the Demo (When Available)
-
-When the public demo is open, the README or repository header will include a Demo URL.
+```mermaid
+flowchart TD
+    User([Browser UI])
+    API[FastAPI Backend\nGoogle Cloud Run]
+    LG[LangGraph Orchestrator]
+    Router{Router Agent}
+    Ingest[Ingestion Layer]
+    Files[File Parser\nPDF · DOCX · Image]
+    YT[YouTube · Audio\nWhisper Transcription]
+    Email[Email Parser\n.eml threads]
+    RAG[RAG Pipeline]
+    Embed[Embed + Chunk]
+    VDB[(Supabase Postgres\n+ pgvector)]
+    Synth[Answer Synthesis\n+ Evidence Chips]
+    Safety[Safety Harness\n6 checks]
+
+    User -->|HTTPS| API
+    API --> LG
+    LG --> Router
+    Router -->|research / direct / perfection| RAG
+    Router -->|new content| Ingest
+    Ingest --> Files
+    Ingest --> YT
+    Ingest --> Email
+    Files --> Embed
+    YT --> Embed
+    Email --> Embed
+    Embed --> VDB
+    RAG -->|hybrid retrieval| VDB
+    VDB -->|top chunks| Synth
+    Synth --> Safety
+    Safety -->|grounded answer| User
+Multi-Agent Routing
+The Router Agent picks one of three modes per query:
+
+Mode	When	What it does
+Direct	Simple, well-scoped questions	Single retrieval pass, fast response
+Research	Multi-hop or comparative questions	Multiple retrieval rounds, deeper reasoning
+Perfection	High-stakes answers	Multiple passes, explicit evidence review
+Routing depends on question complexity, tier, and live retrieval quality.
+
+RAG Pipeline
+flowchart LR
+    In([Input\nFile · URL · Audio])
+    Parse[Parse + Normalize]
+    Chunk[Chunk with overlap]
+    Embed[Compute embeddings\nOpenAI]
+    Store[(Supabase pgvector)]
+    Retrieve[Hybrid retrieval\nsemantic + keyword]
+    Synth[Answer synthesis]
+    Evidence[Evidence chips\nchunk citations]
+    Out([Grounded answer])
+
+    In --> Parse --> Chunk --> Embed --> Store
+    Store --> Retrieve --> Synth --> Evidence --> Out
+Ingestion
+Normalize input (text, HTML, audio transcripts from Whisper).
+
+Chunk with overlap, preserving semantic boundaries.
+
+Store embeddings and metadata keyed by corpus_id and source_id.
+
+Retrieval
+Semantic similarity search via pgvector.
+
+Optional keyword filters and per-session corpus isolation.
+
+Tier limits enforced per query.
+
+Synthesis
+Combine top-k chunks into a grounded answer.
+
+Attach clickable evidence snippets with source references.
+
+Safety harness vetoes or softens when evidence is weak.
+
+Safety Harness
+Six checks run per request:
+
+Tier limit — enforces file and query limits per session tier.
+
+Input shape — rejects oversized or malformed inputs.
+
+Content safety — screens for out-of-scope content.
+
+Grounding — requires sufficient evidence before a confident answer.
+
+Answer style — prefers sourced, transparent responses.
+
+Fallback — returns "I don't know" when retrieval is weak.
+
+Deployment
+flowchart TD
+    GCR[Google Cloud Run\nmarol-backend]
+    CB[Cloud Build\nDockerfile + cloudbuild.yaml]
+    IMG[Container Image\nCPU-only Python 3.11\n~190MB torch vs 858MB CUDA]
+    SB[(Supabase Postgres\npgvector · sessions · tiers)]
+    GCS[Google Cloud Storage\nuploaded files + artifacts]
+    FE[Browser UI\nHTML · JS · evidence chips]
+
+    FE -->|HTTPS| GCR
+    CB --> IMG --> GCR
+    GCR --> SB
+    GCR --> GCS
+Backend: Containerized FastAPI on Google Cloud Run.
+CPU-only image: 5.88s cold start, 3.66s warm.
+
+Database: Supabase Postgres with pgvector for
+vector similarity search.
+
+Storage: Google Cloud Storage for uploads and artifacts.
+
+Build: Google Cloud Build — 8m 53s build time.
+
+Access Tiers
+Tier	Use case	Limits	What you get
+Demo	Quick interviews, first look	1 file, 5 questions	File attach, Tamil YouTube sample, evidence answers
+Evaluation	Test on your own data	Higher limits	Custom corpora, folder/email ingestion, Perfection mode
+Collaborator	Deep technical review	Flexible	Architecture sessions, code-level review, all flows
+Start in Demo. Move to Evaluation when you want to test your own data.
+Collaborator is for deeper technical partnerships.
+
+Tech Stack
+Layer	Technology
+Language	Python 3.11
+Web framework	FastAPI
+Orchestration	LangGraph multi-agent workflows
+Deployment	Google Cloud Run
+Database	Supabase Postgres
+Vector search	pgvector
+Object storage	Google Cloud Storage
+Transcription	OpenAI Whisper
+Embeddings + LLM	OpenAI (GPT-4o)
+Frontend	Lightweight HTML + JS
+Getting Started
+This repository is a system overview and portfolio artifact, not a
+one-click product. It documents the live MAROL deployment.
+
+1. Try the Demo
+When the public demo is open, a Demo URL will appear here.
 
 Recommended flow:
 
-- Open the demo link.
-- Upload a single PDF.
-- Click one of the suggested questions.
-- Inspect the answer and its evidence.
-- Optionally, paste a YouTube URL and ask a question about the video.
+Open the demo link.
 
-If no demo URL is shown, the environment is currently restricted to evaluation and collaborator tiers.
+Upload a single PDF.
 
-### 2. Request Access (Evaluation or Collaborator)
+Click one of the suggested questions.
 
-If you want to evaluate MAROL with your own data or explore collaboration:
+Inspect the answer and its evidence chips.
 
-Send an email with:
+Paste a YouTube URL and ask a question about the video.
 
-- Subject: `MAROL Evaluation Request` or `MAROL Collaboration`.
-- Contents:
-  - Your role and team.
-  - Types of data you want to evaluate (e.g., specs, SOPs, tickets).
-  - What you'd like to learn from the evaluation.
+If no demo URL is shown, the environment is restricted to
+Evaluation and Collaborator tiers.
 
-You'll receive:
+2. Request Access
+To evaluate MAROL with your own data or explore collaboration,
+email vinod.sridharan@txvault.app with:
 
-- A short questionnaire.
-- A proposed evaluation scope (datasets, questions, success criteria).
-- A suggested timeline and mode (async or live session).
+Subject: MAROL Evaluation Request or MAROL Collaboration
 
----
+Your role and team
 
-## Documentation
+Types of data you want to evaluate
 
-This `MAROL-System-Overview` repo is the public documentation layer for the MAROL project.
+What you want to learn
 
-Key files (may evolve):
+You will receive a short questionnaire, a proposed evaluation scope,
+and a suggested timeline.
 
-- `README.md` – high-level overview (this file).
-- `llms.txt` – lightweight system manifest for LLMs and agents.
-- `CHANGELOG.md` – version history and capability changes.
-- `docs/ARCHITECTURE.md` – deeper technical design and data flow.
-- `screenshots/` – demo screenshots (file attach, Tamil YouTube, evidence view, tier modals).
+Documentation
+File	Contents
+README.md	This file — high-level overview
+llms.txt	System manifest for LLMs and agents
+CHANGELOG.md	Version history and capability changes
+docs/ARCHITECTURE.md	Deeper technical design and data flow
+screenshots/	Demo screenshots
+Acknowledgments
+Cole Medin (coleam00) — Early LangGraph RAG patterns that
+influenced MAROL's multi-agent design.
 
-For deeper design docs, incident playbooks, or architecture diagrams, reach out via the contact in Analytics & Engagement.
+LangChain / LangGraph — Foundational frameworks for agentic
+orchestration.
 
----
+Supabase — Open-source backend powering Postgres, pgvector,
+and session management.
 
-## Acknowledgments
+OpenAI — GPT-4o, Whisper, and embeddings APIs.
 
-MAROL stands on the shoulders of excellent open-source projects and prior work:
+FastAPI — Fast, type-safe Python web framework.
 
-- Cole Medin (`coleam00`) – Early LangGraph RAG patterns and orchestration ideas that influenced MAROL's multi-agent design.
-- LangChain / LangGraph – Foundational frameworks for agentic orchestration and RAG workflows.
-- Supabase – Open-source backend infrastructure powering Postgres, authentication, and pgvector.
-- OpenAI – GPT-4o and related APIs used for reasoning and generation.
-- FastAPI – The Python web framework that makes the backend fast, type-safe, and interview-friendly.
-
----
-
-## Analytics & Engagement
-
-<p align="center">
-  <img src="https://img.shields.io/github/stars/VinodSridharan/MAROL-System-Overview?style=social" alt="GitHub Stars">
-  <img src="https://img.shields.io/github/forks/VinodSridharan/MAROL-System-Overview?style=social" alt="Forks">
-  <img src="https://img.shields.io/github/watchers/VinodSridharan/MAROL-System-Overview?style=social" alt="Watchers">
-  <img src="https://img.shields.io/github/last-commit/VinodSridharan/MAROL-System-Overview" alt="Last Commit">
-</p>
-
-Star this repo if you find it valuable for your learning, interviews, or understanding of production RAG systems.
-
-Questions or collaboration? Email `vinod.sridharan@txvault.app` or connect on LinkedIn.
-
----
-
-## Current Production Status
-
-- Version: v2.3.0-alpha.1
-- Deployed To: Google Cloud Run (backend), with Supabase for storage and vector search.
-- Last Updated: January 29, 2026
-- Status: Production (demo and evaluation usage), with ongoing refinements towards v2.3.0 stable.
-
+Current Production Status
+Field	Value
+Version	v2.3.0-alpha.1
+Deployed to	Google Cloud Run (backend)
+Database	Supabase Postgres + pgvector
+Last updated	February 22, 2026
+Status	Production — demo and evaluation usage
+Cold start	5.88s
+Build time	8m 53s
 <div align="center">
+Built by Vinod Sridharan
+Production-grade multi-agent RAG system design and LLM orchestration
 
-**Built by Vinod Sridharan**  
-*Demonstrating production-grade multi-agent RAG system design and advanced LLM orchestration*
+![GitHub Stars](https://img.shields.io/github/stars/VinodSridharan/
+MAROL-System-Overview?style=social)
 
-Latest Update: January 29, 2026 | Status: Production | Version: v2.3.0-alpha.1
+Questions or collaboration?
+Email vinod.sridharan@txvault.app · Connect on LinkedIn
 
-</div>
+</div> ```
