@@ -93,23 +93,16 @@ flowchart TD
     VDB -->|top chunks| Synth
     Synth --> Safety
     Safety -->|grounded answer| User
-```
-
-## Multi-Agent Routing
-
+Multi-Agent Routing
 The Router Agent picks one of three modes per query:
 
-| Mode | When | What it does |
-|------|------|--------------|
-| Direct | Simple, well-scoped questions | Single retrieval pass, fast response |
-| Research | Multi-hop or comparative questions | Multiple retrieval rounds, deeper reasoning |
-| Perfection | High-stakes answers | Multiple passes, explicit evidence review |
-
+Mode	When	What it does
+Direct	Simple, well-scoped questions	Single retrieval pass, fast response
+Research	Multi-hop or comparative questions	Multiple retrieval rounds, deeper reasoning
+Perfection	High-stakes answers	Multiple passes, explicit evidence review
 Routing depends on question complexity, tier, and live retrieval quality.
 
-## RAG Pipeline
-
-```mermaid
+RAG Pipeline
 flowchart LR
     In([Input\nFile · URL · Audio])
     Parse[Parse + Normalize]
@@ -123,33 +116,28 @@ flowchart LR
 
     In --> Parse --> Chunk --> Embed --> Store
     Store --> Retrieve --> Synth --> Evidence --> Out
-```
-
-### Ingestion
+Ingestion
 Normalize input (text, HTML, audio transcripts from Whisper).
 
 Chunk with overlap, preserving semantic boundaries.
 
 Store embeddings and metadata keyed by corpus_id and source_id.
 
-### Retrieval
-
+Retrieval
 Semantic similarity search via pgvector.
 
 Optional keyword filters and per-session corpus isolation.
 
 Tier limits enforced per query.
 
-### Synthesis
-
+Synthesis
 Combine top-k chunks into a grounded answer.
 
 Attach clickable evidence snippets with source references.
 
 Safety harness vetoes or softens when evidence is weak.
 
-### Safety Harness
-
+Safety Harness
 Six checks run per request:
 
 Tier limit — enforces file and query limits per session tier.
@@ -164,9 +152,7 @@ Answer style — prefers sourced, transparent responses.
 
 Fallback — returns "I don't know" when retrieval is weak.
 
-## Deployment
-
-```mermaid
+Deployment
 flowchart TD
     GCR[Google Cloud Run\nmarol-backend]
     CB[Cloud Build\nDockerfile + cloudbuild.yaml]
@@ -179,8 +165,6 @@ flowchart TD
     CB --> IMG --> GCR
     GCR --> SB
     GCR --> GCS
-```
-
 Backend: Containerized FastAPI on Google Cloud Run.
 CPU-only image: 5.88s cold start, 3.66s warm.
 
@@ -191,37 +175,31 @@ Storage: Google Cloud Storage for uploads and artifacts.
 
 Build: Google Cloud Build — 8m 53s build time.
 
-## Access Tiers
-
-| Tier | Use case | Limits | What you get |
-| Demo | Quick interviews, first look | 1 file, 5 questions | File attach, Tamil YouTube sample, evidence answers |
-| Evaluation | Test on your own data | Higher limits | Custom corpora, folder/email ingestion, Perfection mode |
-| Collaborator | Deep technical review | Flexible | Architecture sessions, code-level review, all flows |
-
+Access Tiers
+Tier	Use case	Limits	What you get
+Demo	Quick interviews, first look	1 file, 5 questions	File attach, Tamil YouTube sample, evidence answers
+Evaluation	Test on your own data	Higher limits	Custom corpora, folder/email ingestion, Perfection mode
+Collaborator	Deep technical review	Flexible	Architecture sessions, code-level review, all flows
 Start in Demo. Move to Evaluation when you want to test your own data.
 Collaborator is for deeper technical partnerships.
 
-## Tech Stack
-
-| Layer | Technology |
-|-------|------------|
-| Language | Python 3.11 |
-| Web framework | FastAPI |
-| Orchestration | LangGraph multi-agent workflows |
-| Deployment | Google Cloud Run |
-| Database | Supabase Postgres |
-| Vector search | pgvector |
-| Object storage | Google Cloud Storage |
-| Transcription | OpenAI Whisper |
-| Embeddings + LLM | OpenAI (GPT-4o) |
-| Frontend | Lightweight HTML + JS |
-
-## Getting Started
+Tech Stack
+Layer	Technology
+Language	Python 3.11
+Web framework	FastAPI
+Orchestration	LangGraph multi-agent workflows
+Deployment	Google Cloud Run
+Database	Supabase Postgres
+Vector search	pgvector
+Object storage	Google Cloud Storage
+Transcription	OpenAI Whisper
+Embeddings + LLM	OpenAI (GPT-4o)
+Frontend	Lightweight HTML + JS
+Getting Started
 This repository is a system overview and portfolio artifact, not a
 one-click product. It documents the live MAROL deployment.
 
-### 1. Try the Demo
-
+1. Try the Demo
 When the public demo is open, a Demo URL will appear here.
 
 Recommended flow:
@@ -239,7 +217,7 @@ Paste a YouTube URL and ask a question about the video.
 If no demo URL is shown, the environment is restricted to
 Evaluation and Collaborator tiers.
 
-### 2. Request Access
+2. Request Access
 To evaluate MAROL with your own data or explore collaboration,
 email vinod.sridharan@txvault.app with:
 
@@ -254,17 +232,14 @@ What you want to learn
 You will receive a short questionnaire, a proposed evaluation scope,
 and a suggested timeline.
 
-## Documentation
-
-| File | Contents |
-|------|----------|
-| README.md | This file — high-level overview |
-| llms.txt | System manifest for LLMs and agents |
-| CHANGELOG.md | Version history and capability changes |
-| docs/ARCHITECTURE.md | Deeper technical design and data flow |
-| screenshots/ | Demo screenshots |
-
-## Acknowledgments
+Documentation
+File	Contents
+README.md	This file — high-level overview
+llms.txt	System manifest for LLMs and agents
+CHANGELOG.md	Version history and capability changes
+docs/ARCHITECTURE.md	Deeper technical design and data flow
+screenshots/	Demo screenshots
+Acknowledgments
 Cole Medin (coleam00) — Early LangGraph RAG patterns that
 influenced MAROL's multi-agent design.
 
@@ -278,18 +253,15 @@ OpenAI — GPT-4o, Whisper, and embeddings APIs.
 
 FastAPI — Fast, type-safe Python web framework.
 
-## Current Production Status
-
-| Field | Value |
-|-------|-------|
-| Version | v2.3.0-alpha.1 |
-| Deployed to | Google Cloud Run (backend) |
-| Database | Supabase Postgres + pgvector |
-| Last updated | February 22, 2026 |
-| Status | Production — demo and evaluation usage |
-| Cold start | 5.88s |
-| Build time | 8m 53s |
-
+Current Production Status
+Field	Value
+Version	v2.3.0-alpha.1
+Deployed to	Google Cloud Run (backend)
+Database	Supabase Postgres + pgvector
+Last updated	February 22, 2026
+Status	Production — demo and evaluation usage
+Cold start	5.88s
+Build time	8m 53s
 <div align="center">
 Built by Vinod Sridharan
 Production-grade multi-agent RAG system design and LLM orchestration
@@ -300,4 +272,4 @@ MAROL-System-Overview?style=social)
 Questions or collaboration?
 Email vinod.sridharan@txvault.app · Connect on LinkedIn
 
-</div>
+</div> ```
