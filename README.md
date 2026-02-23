@@ -2,7 +2,7 @@
 
 **Upload a file. Ask a question. Get grounded answers over your own data.**
 
-MAROL is documented here as a production RAG console and portfolio artifact for hiring managers, technical evaluators, and practitioners who want to see real multi-agent system design.
+MAROL is documented here as a production RAG console and portfolio artifact for hiring managers, technical evaluators, and practitioners who want to see real multi-agent system design in practice.
 
 <p align="center">
   <img src="screenshots/SkySwim200.png" alt="MAROL Logo" width="220" />
@@ -20,9 +20,13 @@ MAROL is documented here as a production RAG console and portfolio artifact for 
 ## Try It in 30 Seconds
 
 1. Upload a single PDF, DOCX, or image.
-2. MAROL summarizes it and generates five smart questions about the file.
+2. MAROL summarizes it and generates five focused questions about the file.
 3. Click a question or ask your own.
 4. Inspect the answer and its evidence badges to see exactly where it came from.
+
+> Try your own file first.  
+> The easiest way to understand MAROL is to upload one document and ask a few questions. All other features (YouTube, email, advanced workflows) build on the same grounded RAG engine.
+
 
 ### What It Looks Like
 
@@ -35,29 +39,29 @@ MAROL is documented here as a production RAG console and portfolio artifact for 
 
 ---
 
-## Why This Is Awesome
+## Why This System Is Useful
 
 MAROL is a **Multi-Agent Reasoning Orchestration Lab** – a place to prototype, harden, and demo real-world RAG patterns that behave like teammates, not toys.
 
-### 🎯 Speed – File Attach & Voice That Feel Instant
+### Speed – File Attach & Voice That Feel Instant
 
-- 30-second file attach demo: upload once, get a summary + five smart questions, then ask follow-ups.
-- Lightweight UI hits a production backend (FastAPI + LangGraph), not a toy notebook.
-- Designed for live demos and interviews where you only have a few minutes.
+- Short file attach demo: upload once, get a summary and five questions, then ask follow ups.
+- Lightweight UI connects to a production backend (FastAPI + LangGraph), not a notebook.
+- Designed for live demos and interviews where time is limited.
 
-### 🌍 Multilingual RAG – Proven on Tamil YouTube
+### Multilingual RAG – Proven on Tamil YouTube
 
-- Ingests YouTube and audio, transcribes with Whisper, and builds a transcript-backed RAG index.
-- Shipped demo: Gen AI concepts video in Tamil with grounded Q&A in English or Tamil.
-- Same pipeline works for other long-form audio/video in many languages.
+- Ingests YouTube and audio, transcribes with Whisper, and builds a transcript backed RAG index.
+- Shipped demo: a Gen AI concepts video in Tamil, with grounded Q&A in English or Tamil.
+- Same pipeline can support other long form audio or video in many languages.
 
-### 🔬 Grounding & Safety – Answers You Can Inspect
+### Grounding & Safety – Answers You Can Inspect
 
-- Every answer comes with evidence chips that show which chunks were retrieved.
-- Safety harness prefers "I don't know" over confident hallucinations when evidence is weak.
-- Policies and isolation docs (in `docs/`) explain how MAROL treats data and access.
+- Router decides between Research, Direct, and Perfection modes based on question and tier.
+- Ingestion agents handle files, YouTube/audio, and email archives in a unified index.
+- Deployed on Google Cloud Run with Supabase/pgvector as a practical blueprint for production RAG.
 
-### 🏗️ Orchestration – Multi-Agent Reasoning That Scales
+### Orchestration – Multi-Agent Reasoning That Scales
 
 - Router chooses between Research, Direct, and Perfection modes based on question and tier.
 - Ingestion agents handle files, YouTube/audio, and email archives into a unified vector index.
@@ -205,15 +209,16 @@ Safety & Guardrails Agent:
 
 ## Access Tiers
 
-MAROL v2.3 introduces a tiered access system so you can safely demo the console while reserving deeper access for evaluators and collaborators.
+MAROL v2.3 introduces a tiered access system. This lets you safely demo the console while reserving deeper access for evaluators and collaborators.
 
-| Tier           | Typical Use Case                             | Limits (example)          | What You Get                                                            | CTA                        |
-|----------------|----------------------------------------------|---------------------------|-------------------------------------------------------------------------|----------------------------|
-| **Demo**       | Quick interviews, first look at MAROL        | 1 file, 5 questions       | File attach demo, Tamil YouTube sample, evidence-badged answers        | Try demo in browser        |
-| **Evaluation** | Teams testing MAROL on their own documents   | Higher file & query limits| Custom corpora, folder/email ingestion, more cautious "Perfection" mode | Request evaluation key     |
-| **Collaborator** | Deep technical reviews & co-building      | Highest limits, flexible  | Access to more agents/flows, architecture sessions, code-level review   | Request collaborator access|
+| Tier        | Typical Use Case                              | Limits (example)      | What You Get                                                            | CTA                         |
+|-------------|-----------------------------------------------|-----------------------|---------------------------------------------------------------------------|-----------------------------|
+| Demo        | Quick interviews, first look at MAROL         | 1 file, 5 questions   | File attach demo, Tamil YouTube sample, evidence-badged answers          | Try demo in browser         |
+| Evaluation  | Teams testing MAROL on their own documents    | Higher file & queries | Custom corpora, folder/email ingestion, more careful "Perfection" mode   | Request evaluation key      |
+| Collaborator| Deep technical reviews & co-building          | Highest limits        | Access to more agents/flows, architecture sessions, code-level review    | Request collaborator access |
 
-> 💡 **Upgrade path:** Start in Demo, then move to Evaluation when you're ready to test your own data. Collaborator access is for deeper technical partnerships and architecture reviews.
+Upgrade path: start with Demo, then move to Evaluation when you want to test your own data. Collaborator access is for deeper technical partnerships and architecture reviews.
+
 
 ---
 
@@ -244,19 +249,19 @@ Building on the "Try It in 30 Seconds" flow:
 
 ### YouTube / Audio with Whisper
 
-Input:
+**Input:**
 
 - YouTube URL.
 - Supported audio file.
 
-Pipeline:
+**Pipeline:**
 
 - Download or accept audio.
 - Transcribe via Whisper API.
 - Chunk the transcript and embed segments.
 - Route queries through the same RAG pipeline as documents.
 
-This pipeline has been proven in production with a Tamil-language Gen AI explainer video, including correct retrieval and grounded Q&A.
+This pipeline has been tested in production with a Tamil-language Gen AI explainer video, including correct retrieval and grounded Q&A.
 
 ### Multi-Agent Routing (Research / Direct / Perfection)
 
@@ -275,14 +280,14 @@ This pipeline has been proven in production with a Tamil-language Gen AI explain
 
 ### Safety Harness (6 Checks)
 
-MAROL's safety harness runs multiple checks per request, including:
+MAROL's safety harness runs several checks per request, including:
 
-- Tier limit check – enforces file and query limits based on session tier.
-- Input size and shape check – rejects inputs that are too large or malformed.
-- Content safety check – screens for content the system should not process.
-- Grounding check – ensures there is sufficient evidence before returning a confident answer.
-- Answer style check – encourages transparent, sourced responses over speculative ones.
-- Fallback / "I don't know" path – provides safe degradation when retrieval is weak or the corpus is missing relevant information.
+- Tier limit check for file and query limits.
+- Input size and shape check.
+- Content safety check.
+- Grounding check for enough evidence.
+- Answer style check for clear, sourced responses.
+- Fallback / "I do not know" path when retrieval is weak or the corpus is missing relevant information.
 
 ---
 
@@ -327,7 +332,8 @@ Agents:
 
 ## Getting Started
 
-This repository is a **system overview and portfolio artifact**, not a one-click product. It documents the live MAROL deployment and is designed to showcase production-grade multi-agent RAG design.
+This repository is a **system overview** and portfolio artifact, not a one-click product. It documents the live MAROL deployment and is designed to showcase production-grade multi-agent RAG design.
+
 
 ### 1. Try the Demo (When Available)
 
@@ -402,7 +408,7 @@ MAROL stands on the shoulders of excellent open-source projects and prior work:
 
 Star this repo if you find it valuable for your learning, interviews, or understanding of production RAG systems.
 
-Questions or collaboration? Email `vinod.sridharan@txvault.app` or connect on LinkedIn.
+Questions or collaboration? Email [vinod.sridharan@txvault.app](mailto:vinod.sridharan@txvault.app) or connect on LinkedIn.
 
 ---
 
@@ -414,10 +420,8 @@ Questions or collaboration? Email `vinod.sridharan@txvault.app` or connect on Li
 - Status: Production (demo and evaluation usage), with ongoing refinements towards v2.3.0 stable.
 
 <div align="center">
-
-**Built by Vinod Sridharan**  
-*Demonstrating production-grade multi-agent RAG system design and advanced LLM orchestration*
-
+Built by Vinod Sridharan<br/>
+Portfolio artifact demonstrating production-grade multi-agent RAG system design and advanced LLM orchestration<br/>
 Latest Update: January 29, 2026 | Status: Production | Version: v2.3.0-alpha.1
-
 </div>
+
