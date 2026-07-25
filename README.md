@@ -1,8 +1,8 @@
-# MAROL - Multi-Agent Reasoning Orchestration Lab
+# MAROL — Multi-Agent Reasoning & Orchestration Lab
 
-**Upload a file. Ask a question. Get grounded answers over your own data.**
+**Built with LangGraph · Supabase · local & cloud LLMs**
 
-MAROL is documented here as a production RAG console and portfolio artifact for hiring managers, technical evaluators, and practitioners who want to see real multi-agent system design in practice.
+Upload docs, ask questions — get evidence-backed answers in seconds. Private by design: local-first stack with strict firewall controls.
 
 <p align="center">
   <img src="screenshots/SkySwim200.png" alt="MAROL Logo" width="220" />
