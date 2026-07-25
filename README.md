@@ -416,12 +416,12 @@ Questions or collaboration? Email [vinod.sridharan@txvault.app](mailto:vinod.sri
 
 - Version: v2.3.0-alpha.1
 - Deployed To: Google Cloud Run (backend), with Supabase for storage and vector search.
-- Last Updated: January 29, 2026
+- Last Updated: July 25, 2026
 - Status: Production (demo and evaluation usage), with ongoing refinements towards v2.3.0 stable.
 
 <div align="center">
 Built by Vinod Sridharan<br/>
 Portfolio artifact demonstrating production-grade multi-agent RAG system design and advanced LLM orchestration<br/>
-Latest Update: January 29, 2026 | Status: Production | Version: v2.3.0-alpha.1
+Latest Update: July 25, 2026 | Status: Production | Version: v2.3.0-alpha.1
 </div>
 
